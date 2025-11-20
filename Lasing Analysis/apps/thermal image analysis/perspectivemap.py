@@ -17,11 +17,20 @@ REFERENCE_PATH = "./CameraPerspectivePoints.txt"
 
 # EDIT THESE FOR RECALIBRATION
 
-# approximate WIDTH and HEIGHT (pixels) of the rectangular feature used for calibration.
-# as of september 2024 we are using the outline of the aluminum chip-holding brick.
+# exact WIDTH and HEIGHT (mm) of the rectangular feature used for calibration.
+# as of October 2025 we are using the small outline of the aluminum chip-holding brick.
+# Diagram: https://docs.google.com/drawings/d/1t9eOAOHU1ThwDQBZjNbz-dM8aimdOd7iz81cOJ7B_L8/edit?usp=sharing
 
-WIDTH = 240
-HEIGHT = 188
+TRUE_WIDTH = 48.2  # mm
+TRUE_HEIGHT = 37.2  # mm
+CHIP_SIDELENGTH = 32.25  # mm, perhaps redundant with CHIP_DIM below but CAD gives this value
+FTRUE_WIDTH = 62 # mm, width of the full brick
+FTRUE_HEIGHT = 45 # mm, height of the full brick
+SCALING_FACTOR = 5  # factor to scale up physical dimensions to image pixel dimensions
+
+WIDTH = int(TRUE_WIDTH * SCALING_FACTOR)
+HEIGHT = int(TRUE_HEIGHT * SCALING_FACTOR)
+SIDELENGTH = int(CHIP_SIDELENGTH * SCALING_FACTOR)
 
 CHIP_DIM = (32, 32)  # physical dimensions of the chip
 CHIP_ORIGIN = (154, 260)  # sensor bottom-left corner in image
@@ -34,8 +43,12 @@ OPTRIS_IMGHEIGHT = 288
 # "offset"; the position of a reference in image coordinates
 # This is currently the top-left corner of the rectangle.
 # this ensures the transformed image is aligned; this point will remain unmoved
-ox = 73
-oy = 83
+ox = 102
+oy = 94
+
+# Original values for ox, oy (Allen's calibration)
+# ox = 73
+# oy = 83
 
 # END CONSTANTS
 
@@ -49,6 +62,45 @@ target = np.float32([[ox, oy], [ox + WIDTH, oy],
 # build transformation matrix
 image_transform = cv2.getPerspectiveTransform(actual, target)
 
+
+def get_target_corners():
+    '''
+    Returns the target corners of the calibration rectangle in image coordinates.
+    '''
+    return target
+
+def get_chip_corners():
+    '''
+    Returns the corners of the chip in image coordinates.
+    '''
+    chip = np.float32([[ox + WIDTH - SIDELENGTH, oy + HEIGHT - SIDELENGTH], [ox + WIDTH, oy + HEIGHT - SIDELENGTH],
+                      [ox + WIDTH - SIDELENGTH, oy + HEIGHT], [ox + WIDTH, oy + HEIGHT]])
+    return chip
+
+def get_fbrick_corners():
+    '''
+    Returns the corners of the full brick in image coordinates.
+    '''
+    brick = np.float32([[ox - (FTRUE_WIDTH - TRUE_WIDTH) * SCALING_FACTOR, oy - (FTRUE_HEIGHT - TRUE_HEIGHT) * SCALING_FACTOR], [ox + WIDTH,  oy - (FTRUE_HEIGHT - TRUE_HEIGHT) * SCALING_FACTOR],
+                      [ox - (FTRUE_WIDTH - TRUE_WIDTH) * SCALING_FACTOR, oy + HEIGHT], [ox + WIDTH, oy + HEIGHT]])
+    return brick
+
+def get_calibration_dimensions():
+    '''
+    Returns the physical dimensions (width, height) of the calibration rectangle in mm.
+    '''
+    return TRUE_WIDTH, TRUE_HEIGHT, SCALING_FACTOR
+
+def refresh_reference():
+    '''
+    Reloads the reference points from file and recalculates the perspective transform.
+    Call this function if you have edited the reference points file.
+    '''
+    actual = np.loadtxt(REFERENCE_PATH, delimiter=",", dtype="float32")
+    target = np.float32([[ox, oy], [ox + WIDTH, oy],
+                     [ox, oy + HEIGHT], [ox + WIDTH, oy + HEIGHT]])
+    global image_transform
+    image_transform = cv2.getPerspectiveTransform(actual, target)
 
 def cv_xy_package(x, y):
     '''
