@@ -67,6 +67,8 @@ def get_target_corners():
     '''
     Returns the target corners of the calibration rectangle in image coordinates.
     '''
+    target = np.float32([[ox, oy], [ox + WIDTH, oy],
+                         [ox + WIDTH, oy + HEIGHT], [ox, oy + HEIGHT]])
     return target
 
 def get_chip_corners():
@@ -74,7 +76,7 @@ def get_chip_corners():
     Returns the corners of the chip in image coordinates.
     '''
     chip = np.float32([[ox + WIDTH - SIDELENGTH, oy + HEIGHT - SIDELENGTH], [ox + WIDTH, oy + HEIGHT - SIDELENGTH],
-                      [ox + WIDTH - SIDELENGTH, oy + HEIGHT], [ox + WIDTH, oy + HEIGHT]])
+                       [ox + WIDTH, oy + HEIGHT], [ox + WIDTH - SIDELENGTH, oy + HEIGHT]])
     return chip
 
 def get_fbrick_corners():
@@ -82,7 +84,7 @@ def get_fbrick_corners():
     Returns the corners of the full brick in image coordinates.
     '''
     brick = np.float32([[ox - (FTRUE_WIDTH - TRUE_WIDTH) * SCALING_FACTOR, oy - (FTRUE_HEIGHT - TRUE_HEIGHT) * SCALING_FACTOR], [ox + WIDTH,  oy - (FTRUE_HEIGHT - TRUE_HEIGHT) * SCALING_FACTOR],
-                      [ox - (FTRUE_WIDTH - TRUE_WIDTH) * SCALING_FACTOR, oy + HEIGHT], [ox + WIDTH, oy + HEIGHT]])
+                        [ox + WIDTH, oy + HEIGHT], [ox - (FTRUE_WIDTH - TRUE_WIDTH) * SCALING_FACTOR, oy + HEIGHT]])
     return brick
 
 def get_calibration_dimensions():
@@ -98,7 +100,7 @@ def refresh_reference():
     '''
     actual = np.loadtxt(REFERENCE_PATH, delimiter=",", dtype="float32")
     target = np.float32([[ox, oy], [ox + WIDTH, oy],
-                     [ox, oy + HEIGHT], [ox + WIDTH, oy + HEIGHT]])
+                     [ox + WIDTH, oy + HEIGHT], [ox, oy + HEIGHT]])
     global image_transform
     image_transform = cv2.getPerspectiveTransform(actual, target)
 

@@ -1,2 +1,4 @@
 *.csv
+# .ravi files exceed github's file size limit
+*.ravi
 !README.txt

@@ -15,24 +15,27 @@ from IPython.display import HTML
 from math import radians as rad
 from math import degrees as deg
 
+#==================================================================================================
+# DEPRECATED CODE; helper functions have been refactored into
+# - camera.py for camera/chip geometry (constants and vector calculations)
+# - temperatureimage.py for temperature image processing (image correction and rendering)
+# - optrisROI.py for ROI definitions
+#==================================================================================================
 
-# We want to be able to provide xy coordinates, the angle of the camera, and the angle of the lid? and maximum temeprature to provide the expected measured temperature.
-
-# Start with a helper function to account for lambertian emission and distance
 
 # Constants for camera and chip setup. Origin is defuined to be at the center of the lid on which the camrea is mounted. Chip offset constants are taken from old CAD; may be inaccurate.
 
 # Neu Vorrichtung
 CHIP_OFFSET_X = 3.675327 # millimeters, x offset of the top right corner of the chip from the origin
 CHIP_OFFSET_Y = 14.096069 # millimeters, y offset of the top right corner of the chip from the origin
-CHIP_OFFSET_Z = 155.700000 # millimeters, z offset of the top right corner of the chip from the origin
+CHIP_OFFSET_Z = 155.700000 #- 2.1 # millimeters, z offset of the top right corner of the chip from the origin
 
-LID_ANGLE =  rad(-43.8400825)
+LID_ANGLE =  rad(-43.8400825) + np.arcsin(14 / 90)
 MOUNT_ANGLE = rad(deg(LID_ANGLE) - 27.8106366)
 MOUNT_OFFSET_Y = 19.10335 # millimeters, intersection of the y=axis with the plane in which the camera rotates (CAMERA_ANGLE rotation)
 CAMERA_RADIUS = 38.86401 # millimeters, distance from the camera mount to the origin + MOUNT_OFFSET
-CAMERA_HEIGHT = 91.11 # millimeters, height of the camera mount (center of rotation)
-CAMERA_ANGLE = rad(22.5) # radians, angle of the camera from the vertical
+CAMERA_HEIGHT = 84.5 # millimeters [?,91.11], height of the camera mount (center of rotation)
+CAMERA_ANGLE = rad(10) # radians, angle of the camera from the vertical
 CAMERA_LENGTH = 73.97719 # millimeters, length of the camera from the point of rotation to the lens
 
 LENS_DIAMETER = 18 # millimeters, diameter of the camera lens
@@ -49,9 +52,9 @@ UPPER_APERTURE_HEIGHT = CHIP_OFFSET_Z + APERTURE_HEIGHT # millimeters, height of
 # STEFAN_BOLTZMANN = 5.67e-8 # W/m^2/K^4, Stefan-Boltzmann constant
 AMBIENT_TEMPERATURE = 299.15 # Kelvin, ambient temperature
 
-IMDIMS = (400,300)
 KELVIN_OFFSET = 273.15
 WIDTH, HEIGHT, SCALING = pm.get_calibration_dimensions()
+CHIP_CORNER_ORIGIN = pm.get_chip_corners()[2]  # Bottom-left corner of the chip in image coordinates
 
 # Create "iron" colormap
 IRON_RAW = np.flipud(np.asarray(Image.open("C:/Users/ssuub/Desktop/EDET80k_Damage/Lasing Analysis/apps/thermal image analysis/Iron Color Palette.png")))
@@ -61,11 +64,11 @@ IRON = LinearSegmentedColormap.from_list('iron', IRON_RAW / 255)
 
 sub_limit = 50
 
-CO = [CAMERA_RADIUS * np.sin(LID_ANGLE), CAMERA_RADIUS * np.cos(LID_ANGLE), CAMERA_HEIGHT]
+CO = [CAMERA_RADIUS * np.sin(LID_ANGLE), CAMERA_RADIUS * np.cos(LID_ANGLE), CAMERA_HEIGHT] # Coordinates of the camera origin in the lab coordinate system
 
-LFM= [[-np.sin(MOUNT_ANGLE) * np.cos(CAMERA_ANGLE), -np.cos(MOUNT_ANGLE) * np.cos(CAMERA_ANGLE), np.sin(CAMERA_ANGLE)],
-                       [np.cos(MOUNT_ANGLE), - np.sin(MOUNT_ANGLE), 0],
-                       [-np.sin(MOUNT_ANGLE) * np.sin(CAMERA_ANGLE), -np.cos(MOUNT_ANGLE) * np.sin(CAMERA_ANGLE), - np.cos(CAMERA_ANGLE)]]
+LFM = [[np.sin(MOUNT_ANGLE) * np.cos(CAMERA_ANGLE), np.cos(MOUNT_ANGLE) * np.cos(CAMERA_ANGLE), - np.sin(CAMERA_ANGLE)],
+       [np.cos(MOUNT_ANGLE), - np.sin(MOUNT_ANGLE), 0],
+       [-np.sin(MOUNT_ANGLE) * np.sin(CAMERA_ANGLE), -np.cos(MOUNT_ANGLE) * np.sin(CAMERA_ANGLE), - np.cos(CAMERA_ANGLE)]]
 
 CFM = np.linalg.inv(LFM)
 
@@ -93,7 +96,7 @@ def cameraChipVector(x, y, rho = 0, phi = 0, view_coords = False):
 
     return rx, ry, rz
 
-def apertureRadii(x, y, rho = 0, phi = 0):
+def apertureRadii(x, y, rho = 0, phi = 0, view_coords = False):
     rx, ry, rz = cameraChipVector(x, y, rho, phi)
     #print(rx, ry, rz)
     
@@ -103,7 +106,9 @@ def apertureRadii(x, y, rho = 0, phi = 0):
     # Find the x and y coordinates of the center of the aperture from the sample origin
     aperture_x = APERTURE_DISTANCE * np.sin(APERTURE_ANGLE) - CHIP_OFFSET_X - x
     aperture_y = APERTURE_DISTANCE * np.cos(APERTURE_ANGLE) + CHIP_OFFSET_Y - y
-    # print("Aperture Center:", aperture_x, aperture_y)
+    
+    if view_coords:
+        print("Aperture Center:", aperture_x, aperture_y)
 
     # Calculate the radius (with center at the aperture center) at which the camera vector intersects the bottom and top of the aperture
     radius_u = np.sqrt(((rx * UPPER_APERTURE_HEIGHT / rz) - aperture_x) ** 2 + ((ry * UPPER_APERTURE_HEIGHT / rz) - aperture_y) ** 2)
@@ -144,7 +149,7 @@ def approxTemp(x, y, maxTemp, resolution = 20):
     avgTemp = netTemp * 6 / ((2 * resolution + 1) * (resolution + 1) * (resolution))
     return avgTemp
 
-def correctedTemp(x, y, temperature, resolution = 2, lambertian = True, occlusion = True, quadratic = False):
+def correctedTemp(x, y, temperature, resolution = 2, lambertian = True, occlusion = True, quadratic = True):
 
     # Return early if temperature is at ambient; assume comes from extraneous points in generation of warped image
     if temperature <= KELVIN_OFFSET:
@@ -152,9 +157,11 @@ def correctedTemp(x, y, temperature, resolution = 2, lambertian = True, occlusio
 
     maxRho = np.arcsin(LENS_DIAMETER / (2 * CAMERA_LENGTH))
     if quadratic:
-        numPoints = resolution * 2
+        numPoints = resolution ** 2
+        deltaPoints = lambda x : 2 * x - 1
     else:
         numPoints = (2 * resolution + 1) * (resolution + 1) * (resolution) / 6
+        deltaPoints = lambda x : (x + 1)**2
 
     interimTemp = temperature
 
@@ -163,15 +170,8 @@ def correctedTemp(x, y, temperature, resolution = 2, lambertian = True, occlusio
         occludedCounter = 0
         for i in range(resolution):
             rho = maxRho * i / resolution
-            if quadratic:
-                jrange = range(2 * i - 1)
-            else:
-                jrange = range((i + 1)**2)
-            for j in jrange:
-                if quadratic:
-                    phi = 2 * np.pi * (j + 0.5) / (2 * i - 1)
-                else:
-                    phi = 2 * np.pi * (j + 0.5) / (i + 1)**2
+            for j in range(deltaPoints(i)):
+                phi = 2 * np.pi * (j + 0.5) / deltaPoints(i)
                 radius_l, radius_u = apertureRadii(x, y, rho, phi)
                 if (radius_l > APERTURE_DIAMETER / 2) or (radius_u > APERTURE_DIAMETER / 2):
                     occludedCounter += 1
@@ -205,17 +205,20 @@ def colorTemp(temperature, min, max, cmap = 'magma'):
     return (int(color_val[0] * 255), int(color_val[1] * 255), int(color_val[2] * 255))
 
 def getRoi(roi):
-    if roi == "chip":
-        chip = pm.get_chip_corners()
-        return chip[0], chip[3]
-    elif roi == "brick":
-        target = pm.get_target_corners()
-        return target[0], target[3]
-    elif roi == "fullbrick":
-        fbrick = pm.get_fbrick_corners()
-        return fbrick[0], fbrick[3]
-    else:
-        return roi[0], roi[1]
+    try:
+        if roi == "chip":
+            chip = pm.get_chip_corners()
+            return chip[0], chip[2]
+        elif roi == "brick":
+            target = pm.get_target_corners()
+            return target[0], target[2]
+        elif roi == "fullbrick":
+            fbrick = pm.get_fbrick_corners()
+            return fbrick[0], fbrick[2]
+        else:
+            return roi[0], roi[2]
+    except:
+        raise ValueError("Invalid ROI specified. Use 'chip', 'brick', 'fullbrick', or provide custom coordinates.")
 
 def onBorder(x, y, top_left, bottom_right):
     if (y == top_left[0] or y == bottom_right[0]) and x >= top_left[1] and x <= bottom_right[1]:
@@ -229,50 +232,116 @@ def inRoi(x, y, top_left, bottom_right):
         return True
     return False
 
+def getRoiPoly(roi):
+    try:
+        if roi == "chip":
+            chip = pm.get_chip_corners()
+            return chip
+        elif roi == "brick":
+            target = pm.get_target_corners()
+            return target
+        elif roi == "fullbrick":
+            fbrick = pm.get_fbrick_corners()
+            return fbrick
+        else:
+            return roi
+    except:
+        raise ValueError("Invalid ROI specified. Use 'chip', 'brick', 'fullbrick', or provide custom coordinates.")
 
+def onBorderPoly(x, y, roi):
+    for i in range(len(roi)):
+        next_i = (i + 1) % len(roi)
+        # Vertical line case
+        if (roi[i][1] == roi[next_i][1]):
+            if (x == roi[i][1]) and (y >= min(roi[i][0], roi[next_i][0])) and (y <= max(roi[i][0], roi[next_i][0])):
+                return True
+        # Horizontal line case
+        elif (roi[i][0] == roi[next_i][0]):
+            if (y == roi[i][0]) and (x >= min(roi[i][1], roi[next_i][1])) and (x <= max(roi[i][1], roi[next_i][1])):
+                return True
+        # Diagonal line case
+        else:
+            # Define a line between two points and check if (x,y) is on that line segment
+            linex = lambda x: (roi[next_i][0] - roi[i][0]) / (roi[next_i][1] - roi[i][1]) * (x - roi[i][1]) + roi[i][0]
+            liney = lambda y: (roi[next_i][1] - roi[i][1]) / (roi[next_i][0] - roi[i][0]) * (y - roi[i][0]) + roi[i][1]
+            if (x >= min(roi[i][1], roi[next_i][1])) and (x <= max(roi[i][1], roi[next_i][1])):
+                if np.isclose(y, linex(x), atol=0.5):
+                    return True
+            if (y >= min(roi[i][0], roi[next_i][0])) and (y <= max(roi[i][0], roi[next_i][0])):
+                if np.isclose(x, liney(y), atol=0.5):
+                    return True
+    return False
+
+def inRoiPoly(x, y, roi):
+    # Ray-casting algorithm to determine if point is in polygon
+    inside = False
+    n = len(roi)
+    p1y, p1x = roi[0]
+    for i in range(n + 1):
+        p2y, p2x = roi[i % n]
+        if y > min(p1y, p2y):
+            if y <= max(p1y, p2y):
+                if x <= max(p1x, p2x):
+                    if p1y != p2y:
+                        xinters = (y - p1y) * (p2x - p1x) / (p2y - p1y) + p1x
+                    if p1x == p2x or x <= xinters:
+                        inside = not inside
+        p1x, p1y = p2x, p2y
+    return inside
 #========================== Holistic Correction Helper Functions ==============================
 
-def imageCorrectRuntimeEstimate(roi, correction_resolution, lambertian, occlusion):
+def imageCorrectRuntimeEstimate(roi, correction_resolution, lambertian, occlusion, quadratic, cmap):
     # Determine ROI coordinates
     if roi != None:
         top_left, bottom_right = getRoi(roi)
 
     # Estimate runtime
-    BASE_TIME = 22.9 # runtime for lambertian, occlusion = False
+    if cmap == IRON:
+        BASE_TIME = 4.0 # runtime for lambertian, occlusion = False
+    else:
+        BASE_TIME = 22.9 # runtime for lambertian, occlusion = False, magma colormap
+
     est_runtime = BASE_TIME # runtime in seconds if lambertian calculations are not performed
     if lambertian:
         est_runtime += 2.2 # additional time for lambertian correction
-    runtime_factor = (42128.1 - BASE_TIME) / (40 * 41 * 81 / 6) # empirical factor based on runtime tests
 
-    # Runtime factor seems to be linear when limiting to a ROI
-    if roi != None:
-        runtime_factor = (3618.1 - BASE_TIME) / (20 * 21 * 41 / 6) # empirical factor based on runtime tests
-        runtime_factor *= (bottom_right[0] - top_left[0]) * (bottom_right[1] - top_left[1]) / 69750
     if occlusion:
-        est_runtime += runtime_factor * correction_resolution * (correction_resolution + 1) * (2 * correction_resolution + 1) / 6
+        runtime_factor = 1.0
+        # Runtime factor seems to be linear when limiting to a ROI
+        if roi != None:
+            runtime_factor = (bottom_right[0] - top_left[0]) * (bottom_right[1] - top_left[1]) / 44826
+            
+        if quadratic:
+            est_runtime += runtime_factor * (0.81944085 * (correction_resolution ** 2) - 1.63533937 * correction_resolution)
+        else:
+            runtime_factor *= (3618.1 - BASE_TIME) / (20 * 21 * 41 / 6) # empirical factor based on runtime tests
+            est_runtime += runtime_factor * correction_resolution * (correction_resolution + 1) * (2 * correction_resolution + 1) / 6
+
+        
     print(f"Estimated Runtime: {int(est_runtime // 3600)}:{int(est_runtime % 3600 // 60):02d}:{int(est_runtime % 60 // 1):02d}")
     return est_runtime
 
 #============================== Holistic Correction Function ==================================
 
-def imageCorrect(filename, title = None, mintemp = None, maxtemp = None, roi = None, lambertian = True, occlusion = True, correction_resolution = 2, cmap = 'iron'):
+def imageCorrect(filename, title = None, mintemp = None, maxtemp = None, roi = None, lambertian = True, occlusion = True, correction_resolution = 2, quadratic = True, render_image = True, cmap = 'iron'):
     # Determine ROI coordinates
     if roi != None:
         top_left, bottom_right = getRoi(roi)
     if cmap == 'iron':
         cmap = IRON
     
-    imageCorrectRuntimeEstimate(roi, correction_resolution, lambertian, occlusion)
+    imageCorrectRuntimeEstimate(roi, correction_resolution, lambertian, occlusion, quadratic, cmap)
 
     # Load raw data from CSV
     with open(filename, newline='') as csvfile:raw = np.array(list(csv.reader(csvfile, delimiter=';')))
 
     # Format data into floats, then replace with intensity
-    intensity_data = np.zeros((len(raw), len(raw[0])), dtype = np.float64)
+    intensity_data = np.zeros((len(raw),len(raw[0])), dtype = np.float64)
 
-    for x in range(len(raw)):
-        for y in range(len(raw[0]) - 1):
-            intensity_data[x,y] = (float(raw[x,y].replace(',', '.')) + KELVIN_OFFSET) ** 4
+    for y in range(len(intensity_data) - 1):
+        for x in range(len(intensity_data[0]) - 1):
+            intensity = (float(raw[y,x].replace(',', '.')) + KELVIN_OFFSET) ** 4
+            intensity_data[y,x] = intensity
 
     
 
@@ -281,7 +350,7 @@ def imageCorrect(filename, title = None, mintemp = None, maxtemp = None, roi = N
     with Progress(console=Console(force_terminal=True, force_jupyter=False)) as progress:
         task = progress.add_task("Correcting Image Distortion...", total=1)
         spacial_corrected = cv2.warpPerspective(
-            intensity_data, transform, IMDIMS, cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT, borderValue=0) ** 0.25
+            intensity_data, transform, (len(raw[0]), len(raw)), cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT, borderValue=0) ** 0.25
         progress.update(task, advance=1)
 
     # Account for Lambertian Emission and Occlusion
@@ -289,14 +358,16 @@ def imageCorrect(filename, title = None, mintemp = None, maxtemp = None, roi = N
         if roi != None:
             problem_space = (bottom_right[0] - top_left[0]) * (bottom_right[1] - top_left[1])
         else:
-            problem_space = len(spacial_corrected) * (len(spacial_corrected[0]) - 1) 
+            problem_space = len(spacial_corrected) * (len(spacial_corrected[0])) 
         task = progress.add_task("Correcting for Angle Dependence...", total = problem_space)
-        for x in range(len(spacial_corrected)):
-            for y in range(len(spacial_corrected[0]) - 1):
-                if roi == None or inRoi(x, y, top_left, bottom_right):
-                    measured_temp = (spacial_corrected[x,y])
-                    true_temp = correctedTemp(x / SCALING, y / SCALING, measured_temp, correction_resolution, lambertian, occlusion)
-                    spacial_corrected[x,y] = true_temp
+        for y in range(len(spacial_corrected) - 1):
+            for x in range(len(spacial_corrected[0]) - 1):
+                if roi == None or inRoi(y, x, top_left, bottom_right):
+                    xn = (x - CHIP_CORNER_ORIGIN[0]) / SCALING
+                    yn = (CHIP_CORNER_ORIGIN[1] - y) / SCALING
+                    measured_temp = (spacial_corrected[y,x])
+                    true_temp = correctedTemp(xn, yn, measured_temp, correction_resolution, lambertian, occlusion, quadratic)
+                    spacial_corrected[y,x] = true_temp
                     progress.update(task, advance=1)
 
 
@@ -305,60 +376,73 @@ def imageCorrect(filename, title = None, mintemp = None, maxtemp = None, roi = N
         mintemp = (np.min(spacial_corrected[spacial_corrected > KELVIN_OFFSET]) - KELVIN_OFFSET)
     if maxtemp == None:
         maxtemp = (np.max(spacial_corrected)  - KELVIN_OFFSET)
+    print(f"Temperature Range: {mintemp:.2f} °C to {maxtemp:.2f} °C")
 
-    # Map to color scale
-    with Progress(console=Console(force_terminal=True, force_jupyter=False)) as progress:
-        task = progress.add_task("Mapping to Color Scale...", total = len(spacial_corrected) * (len(spacial_corrected[0]) - 1))
-        imageData = np.zeros((len(spacial_corrected), len(spacial_corrected[0]) - 1, 3), dtype = np.uint8)
+    if render_image:
+        # Map to color scale
+        with Progress(console=Console(force_terminal=True, force_jupyter=False)) as progress:
+            task = progress.add_task("Mapping to Color Scale...", total = len(spacial_corrected) * (len(spacial_corrected[0]) - 1))
+            imageData = np.zeros((len(spacial_corrected), len(spacial_corrected[0]), 3), dtype = np.uint8)
 
-        for x in range(len(spacial_corrected)):
-            for y in range(len(spacial_corrected[0]) - 1):
-                if roi != None and onBorder(x, y, top_left, bottom_right):
-                    imageData[x,y] = (255,255,255)  # Highlight ROI in white
-                else:
-                    imageData[x,y] = colorTemp((spacial_corrected[x,y]) - KELVIN_OFFSET, mintemp, maxtemp, cmap)
-                progress.update(task, advance=1)
-    
-    plt.close("Corrected Thermal Image")
+            for y in range(len(spacial_corrected) - 1):
+                for x in range(len(spacial_corrected[0]) - 1):
+                    if roi != None and onBorder(y, x, top_left, bottom_right):
+                        imageData[y,x] = (255,255,255)  # Highlight ROI in white
+                    else:
+                        imageData[y,x] = colorTemp((spacial_corrected[y,x]) - KELVIN_OFFSET, mintemp, maxtemp, cmap)
+                    progress.update(task, advance=1)
+        
+        plt.close("Corrected Thermal Image")
 
-    img = Image.fromarray(imageData)
+        img = Image.fromarray(imageData)
 
-    fig, ax = plt.subplots(1, 1, num = "Corrected Thermal Image")
+        fig, ax = plt.subplots(1, 1, num = "Corrected Thermal Image")
 
-    if title != None:
-        plt.title(title)
-    
-    imgplot = ax.imshow(img, vmin = mintemp, vmax = maxtemp, cmap = cmap)
-    ax.set_axis_off()
+        if title != None:
+            plt.title(title)
+        
+        imgplot = ax.imshow(img, vmin = mintemp, vmax = maxtemp, cmap = cmap)
+        ax.set_axis_off()
 
-    plt.axis('off')
-    plt.colorbar(imgplot, ax = ax, label = 'Temperature (°C)')
-    plt.show()
+        plt.axis('off')
+        plt.colorbar(imgplot, ax = ax, label = 'Temperature (°C)')
+        plt.show()
+
+    return spacial_corrected - KELVIN_OFFSET
 
 
-def renderImage(filename, title = None, mintemp = None, maxtemp = None, cmap = 'magma'):
+def renderImage(filename, title = None, mintemp = None, maxtemp = None, roi = None, cmap = 'iron'):
+    roi = getRoiPoly(roi)
     if cmap == 'iron':
         cmap = IRON
     
-    # Load raw data from CSV
-    with open(filename, newline='') as csvfile:
-        raw = np.array(list(csv.reader(csvfile, delimiter=';')))
+    if isinstance(filename, str):
+        # Load raw data from CSV
+        with open(filename, newline='') as csvfile:
+            raw = np.array(list(csv.reader(csvfile, delimiter=';')))
 
-    temperature_data = np.zeros((len(raw), len(raw[0])), dtype = np.float64)
+        temperature_data = np.zeros((len(raw), len(raw[0]) - 1), dtype = np.float64)
 
-    for x in range(len(raw)):
-        for y in range(len(raw[0]) - 1):
-            temperature_data[x,y] = float(raw[x,y].replace(',', '.'))
+        for x in range(len(raw)):
+            for y in range(len(raw[0]) - 1):
+                temperature_data[x,y] = float(raw[x,y].replace(',', '.'))
+    else:
+        temperature_data = filename
 
     if mintemp == None:
-        mintemp = np.min(temperature_data[temperature_data > 0])
+        mintemp = np.min(temperature_data)
     if maxtemp == None:
         maxtemp = np.max(temperature_data)
 
-    imageData = np.zeros((len(temperature_data), len(temperature_data[0]) - 1, 3), dtype = np.uint8)
+    imageData = np.zeros((len(temperature_data), len(temperature_data[0]), 3), dtype = np.uint8)
     for x in range(len(temperature_data)):
-            for y in range(len(temperature_data[0]) - 1):
-                imageData[x,y] = colorTemp((temperature_data[x,y]), mintemp, maxtemp, cmap)
+            for y in range(len(temperature_data[0])):
+                if roi is not None and onBorderPoly(x, y, roi):
+                    imageData[x,y] = (255,255,255)  # Highlight ROI in white
+                # elif roi is not None and inRoiPoly(x, y, roi):
+                #     imageData[x,y] = (0,200,0)
+                else:
+                    imageData[x,y] = colorTemp((temperature_data[x,y]), mintemp, maxtemp, cmap)
 
     plt.close("Thermal Image")
 
