@@ -1,0 +1,13 @@
+image_render.py
+===============
+
+.. deprecated:: 2025
+   The functions in this file were originally used for analysis of Optris images, in particular for lambertian and occlusion corrections. 
+   However, due to the high number of necessary and redundant parameters, these functions have been refactored to use OOP principals.
+   Thus, for any new analysis, the ``TemperatureSet`` class should be used instead of the functions in this file. 
+
+.. seealso::
+   :class:`temperatureimage.TemperatureSet <temperatureimage.TemperatureSet>`
+
+.. autoclass:: camera::CameraPosition
+   :members:

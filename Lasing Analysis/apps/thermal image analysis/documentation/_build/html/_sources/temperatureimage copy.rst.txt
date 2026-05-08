@@ -1,0 +1,8 @@
+temperatureimage.py
+===================
+
+.. autoclass:: temperatureimage::TemperatureSet
+   :members:
+
+.. autoclass:: temperatureimage::TemperatureModel
+   :members:

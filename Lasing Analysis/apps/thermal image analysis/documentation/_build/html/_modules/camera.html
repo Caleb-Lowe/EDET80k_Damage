@@ -1,0 +1,668 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>camera &#8212; Thermal Image Analysis Documentation 2026 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=fc6fd62b"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/camera';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Thermal Image Analysis.png" class="logo__image only-light" alt="Thermal Image Analysis Documentation 2026 documentation - Home"/>
+    <img src="../_static/Thermal Image Analysis.png" class="logo__image only-dark pst-js-only" alt="Thermal Image Analysis Documentation 2026 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../camera.html">
+    camera.py
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../optrisROI.html">
+    optrisROI.py
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../temperatureimage.html">
+    temperatureimage.py
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../oldstuff.html">
+    Pre2025 and Deprecated Files
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../camera.html">
+    camera.py
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../optrisROI.html">
+    optrisROI.py
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../temperatureimage.html">
+    temperatureimage.py
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../oldstuff.html">
+    Pre2025 and Deprecated Files
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">camera</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for camera</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">perspectivemap</span> <span class="k">as</span> <span class="nn">pm</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LinearSegmentedColormap</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">rich.progress</span> <span class="kn">import</span> <span class="n">Progress</span>
+<span class="kn">from</span> <span class="nn">rich.console</span> <span class="kn">import</span> <span class="n">Console</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">radians</span> <span class="k">as</span> <span class="n">rad</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">degrees</span> <span class="k">as</span> <span class="n">deg</span>
+
+
+
+<span class="c1"># We want to be able to provide xy coordinates, the angle of the camera, and the angle of the lid? and maximum temperature to provide the expected measured temperature.</span>
+
+<span class="c1"># Start with a helper function to account for lambertian emission and distance</span>
+
+<span class="c1"># Constants for camera and chip setup. Origin is defuined to be at the center of the lid on which the camrea is mounted. Chip offset constants are taken from old CAD; may be inaccurate.</span>
+
+<span class="c1"># Neu Vorrichtung</span>
+<span class="n">CHIP_OFFSET_X</span> <span class="o">=</span> <span class="mf">3.675327</span> <span class="c1"># millimeters, x offset of the top right corner of the chip from the origin</span>
+<span class="n">CHIP_OFFSET_Y</span> <span class="o">=</span> <span class="mf">14.096069</span> <span class="c1"># millimeters, y offset of the top right corner of the chip from the origin</span>
+<span class="n">CHIP_OFFSET_Z</span> <span class="o">=</span> <span class="mf">155.700000</span> <span class="c1">#- 2.1 # millimeters, z offset of the top right corner of the chip from the origin</span>
+
+<span class="n">LID_ANGLE</span> <span class="o">=</span>  <span class="n">rad</span><span class="p">(</span><span class="o">-</span><span class="mf">43.8400825</span><span class="p">)</span>
+<span class="n">MOUNT_ANGLE</span> <span class="o">=</span> <span class="n">rad</span><span class="p">(</span><span class="n">deg</span><span class="p">(</span><span class="n">LID_ANGLE</span><span class="p">)</span> <span class="o">-</span> <span class="mf">27.8106366</span><span class="p">)</span>
+<span class="n">MOUNT_OFFSET_Y</span> <span class="o">=</span> <span class="mf">19.10335</span> <span class="c1"># millimeters, intersection of the y=axis with the plane in which the camera rotates (CAMERA_ANGLE rotation)</span>
+<span class="n">CAMERA_RADIUS</span> <span class="o">=</span> <span class="mf">38.86401</span> <span class="c1"># millimeters, distance from the camera mount to the origin + MOUNT_OFFSET</span>
+<span class="n">CAMERA_HEIGHT</span> <span class="o">=</span> <span class="mf">84.5</span> <span class="c1"># millimeters [?,91.11], height of the camera mount (center of rotation)</span>
+<span class="n">CAMERA_ANGLE</span> <span class="o">=</span> <span class="n">rad</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># radians, angle of the camera from the vertical</span>
+<span class="n">CAMERA_LENGTH</span> <span class="o">=</span> <span class="mf">73.97719</span> <span class="c1"># millimeters, length of the camera from the point of rotation to the lens</span>
+
+<span class="n">LENS_DIAMETER</span> <span class="o">=</span> <span class="mi">18</span> <span class="c1"># millimeters, diameter of the camera lens</span>
+<span class="c1"># APERTURE_DIAMETER = 47 # millimeters, diameter of the hole in the lid through which the camera views the sample</span>
+<span class="n">UPPER_APERTURE_DIAMETER</span> <span class="o">=</span> <span class="mi">38</span> <span class="c1"># millimeters, diameter of the hole holding the lid through which the camera views the sample</span>
+<span class="n">LOWER_APERTURE_DIAMETER</span> <span class="o">=</span> <span class="mi">28</span> <span class="c1"># millimeters, diameter of the hole in the lid through which the camera views the sample</span>
+<span class="n">APERTURE_DISTANCE</span> <span class="o">=</span> <span class="mi">29</span> <span class="c1"># millimeters, distance from the origin to the center of the aperture</span>
+<span class="n">APERTURE_ANGLE</span> <span class="o">=</span> <span class="n">rad</span><span class="p">(</span><span class="n">deg</span><span class="p">(</span><span class="n">LID_ANGLE</span><span class="p">)</span> <span class="o">+</span> <span class="mf">17.4675436</span><span class="p">)</span> <span class="c1"># degrees, angle of the aperture from the y-axis</span>
+<span class="n">APERTURE_HEIGHT</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># millimeters, height of the aperture above the top of the lid</span>
+<span class="n">LID_THICKNESS</span> <span class="o">=</span> <span class="mi">12</span> <span class="c1"># millimeters, thickness of the lid</span>
+
+<span class="n">LOWER_APERTURE_HEIGHT</span> <span class="o">=</span> <span class="n">CHIP_OFFSET_Z</span> <span class="o">-</span> <span class="n">LID_THICKNESS</span> <span class="c1"># millimeters, height of the bottom of the aperture above the sample</span>
+<span class="n">CENTER_APERTURE_HEIGHT</span> <span class="o">=</span> <span class="n">CHIP_OFFSET_Z</span>
+<span class="n">UPPER_APERTURE_HEIGHT</span> <span class="o">=</span> <span class="n">CHIP_OFFSET_Z</span> <span class="o">+</span> <span class="n">APERTURE_HEIGHT</span> <span class="c1"># millimeters, height of the top of the aperture above the sample</span>
+
+<span class="c1"># EMISSIVITY_PAPER = 0.68</span>
+<span class="c1"># STEFAN_BOLTZMANN = 5.67e-8 # W/m^2/K^4, Stefan-Boltzmann constant</span>
+<span class="n">AMBIENT_TEMPERATURE</span> <span class="o">=</span> <span class="mf">299.15</span> <span class="c1"># Kelvin, ambient temperature</span>
+
+<span class="n">KELVIN_OFFSET</span> <span class="o">=</span> <span class="mf">273.15</span>
+<span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span> <span class="n">SCALING</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">get_calibration_dimensions</span><span class="p">()</span>
+<span class="n">CHIP_CORNER_ORIGIN</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">get_chip_corners</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># Bottom-left corner of the chip in image coordinates</span>
+
+<span class="c1"># Create &quot;iron&quot; colormap</span>
+<span class="n">IRON_RAW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/ssuub/Desktop/EDET80k_Damage/Lasing Analysis/apps/thermal image analysis/Iron Color Palette.png&quot;</span><span class="p">)))</span>
+<span class="n">IRON</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;iron&#39;</span><span class="p">,</span> <span class="n">IRON_RAW</span> <span class="o">/</span> <span class="mi">255</span><span class="p">)</span>
+
+<span class="c1">#=======================================================================================</span>
+
+
+<span class="n">CO</span> <span class="o">=</span> <span class="p">[</span><span class="n">CAMERA_RADIUS</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">LID_ANGLE</span><span class="p">),</span> <span class="n">CAMERA_RADIUS</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">LID_ANGLE</span><span class="p">),</span> <span class="n">CAMERA_HEIGHT</span><span class="p">]</span> <span class="c1"># Coordinates of the camera origin in the lab coordinate system</span>
+
+<span class="n">LFM</span> <span class="o">=</span> <span class="p">[[</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">MOUNT_ANGLE</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">CAMERA_ANGLE</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">MOUNT_ANGLE</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">CAMERA_ANGLE</span><span class="p">),</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">CAMERA_ANGLE</span><span class="p">)],</span>
+       <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">MOUNT_ANGLE</span><span class="p">),</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">MOUNT_ANGLE</span><span class="p">),</span> <span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">MOUNT_ANGLE</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">CAMERA_ANGLE</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">MOUNT_ANGLE</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">CAMERA_ANGLE</span><span class="p">),</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">CAMERA_ANGLE</span><span class="p">)]]</span>
+
+<span class="n">CFM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">LFM</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="CameraPosition">
+<a class="viewcode-back" href="../camera.html#camera.CameraPosition">[docs]</a>
+<span class="k">class</span> <span class="nc">CameraPosition</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a camera position object. Includes information about the position of the camera as well as its line of sight towards the chip.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        lid_angle (float):</span>
+<span class="sd">            The angle in radians of the lid relative to the vertical axis.</span>
+<span class="sd">        camera_angle (float):</span>
+<span class="sd">            The angle in radians of the camera relative to the vertical axis.</span>
+<span class="sd">        camera_height (float):</span>
+<span class="sd">            The height in millimeters of the camera above the sample.</span>
+<span class="sd">        corners (list):</span>
+<span class="sd">            The coordinates of the corners of the chip as seen in the image. Coordinates should be in the form [[x1, y1], [x2, y2], [x3, y3], [x4, y4]], where the corners are ordered as follows: top-left, top-right, bottom-right, bottom-left.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">        ``lid_angle``, ``camera_angle``, and ``camera_height`` are physical measurements that need to be taken by hand each time the camera is moved.</span>
+<span class="sd">        ``corners`` should be determined by taking an image of the chip after moving the camera and recording the coordinates of the corners of the chip in the image.\</span>
+<span class="sd">        </span>
+
+<span class="sd">        For an interactive visualization of what the physical measurements should look like, see</span>
+
+<span class="sd">        https://www.desmos.com/3d/4agexlbubf,</span>
+
+<span class="sd">        </span>
+<span class="sd">        where the ``lid_angle`` is :math:`\\phi_L`, the ``camera_angle`` is :math:`\\rho_C`, and the ``camera_height`` is :math:`H`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="c1"># Maximum acceptance angle of the camera lens; this value was guessed based on physical measurements, may need to be refined</span>
+    <span class="n">_maxRho</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">LENS_DIAMETER</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">CAMERA_LENGTH</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lid_angle</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span> <span class="n">camera_angle</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span> <span class="n">camera_height</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span> <span class="n">corners</span><span class="p">:</span><span class="nb">list</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lid_angle</span> <span class="o">=</span> <span class="n">lid_angle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">camera_angle</span> <span class="o">=</span> <span class="n">camera_angle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">camera_height</span> <span class="o">=</span> <span class="n">camera_height</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">corners</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">corners</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">CO</span> <span class="o">=</span> <span class="p">[</span><span class="n">CAMERA_RADIUS</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">lid_angle</span><span class="p">),</span> <span class="n">CAMERA_RADIUS</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lid_angle</span><span class="p">),</span> <span class="n">camera_height</span><span class="p">]</span> <span class="c1"># Coordinates of the camera origin in the lab coordinate system</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">LFM</span> <span class="o">=</span> <span class="p">[[</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">MOUNT_ANGLE</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">camera_angle</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">MOUNT_ANGLE</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">camera_angle</span><span class="p">),</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">camera_angle</span><span class="p">)],</span>
+               <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">MOUNT_ANGLE</span><span class="p">),</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">MOUNT_ANGLE</span><span class="p">),</span> <span class="mi">0</span><span class="p">],</span>
+               <span class="p">[</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">MOUNT_ANGLE</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">camera_angle</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">MOUNT_ANGLE</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">camera_angle</span><span class="p">),</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">camera_angle</span><span class="p">)]]</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">CFM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">LFM</span><span class="p">)</span>
+
+<div class="viewcode-block" id="CameraPosition.printParameters">
+<a class="viewcode-back" href="../camera.html#camera.CameraPosition.printParameters">[docs]</a>
+    <span class="k">def</span> <span class="nf">printParameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Prints the parameters of the camera position.&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lid Angle (deg):&quot;</span><span class="p">,</span> <span class="n">deg</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lid_angle</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Camera Angle (deg):&quot;</span><span class="p">,</span> <span class="n">deg</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">camera_angle</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Camera Height (mm):&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">camera_height</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="CameraPosition.imageTransform">
+<a class="viewcode-back" href="../camera.html#camera.CameraPosition.imageTransform">[docs]</a>
+    <span class="k">def</span> <span class="nf">imageTransform</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a transformation matrix that maps points in the camera image to points in the chip coordinate system.</span>
+
+<span class="sd">            The transformation is determined by the position of the corners of the annealing brick in the image, which are provided when the camera position object is created as ``corners``.</span>
+<span class="sd">            The goal of this transformation is to convert an image taken from an angle to one take from a &quot;top-down&quot; view of the chip.</span>
+
+<span class="sd">            Returns:</span>
+<span class="sd">                np.ndarray: A 3x3 transformation matrix that can be applied to points in the camera image to map them to points in the chip coordinate system.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pm</span><span class="o">.</span><span class="n">new_image_transform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">corners</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CameraPosition.cameraChipVector">
+<a class="viewcode-back" href="../camera.html#camera.CameraPosition.cameraChipVector">[docs]</a>
+    <span class="k">def</span> <span class="nf">cameraChipVector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rho</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the vector from a point on the chip to a point on the camera lens.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            x (float): </span>
+<span class="sd">                The x coordinate of the point on the chip in pixels, with the origin at the top-left corner of the chip.</span>
+<span class="sd">            y (float): </span>
+<span class="sd">                The y coordinate of the point on the chip in pixels, with the origin at the top-left corner of the chip.</span>
+<span class="sd">            rho (float): </span>
+<span class="sd">                The angle between the point on the camera lens and the center of the camera lens.</span>
+<span class="sd">            phi (float): </span>
+<span class="sd">                The angle of rotation about the center of the camera lens.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple (float, float, float): A tuple containing the x, y, and z components of the vector from the point on the chip to the point on the camera lens in millimeters.</span>
+
+<span class="sd">        .. note::</span>
+<span class="sd">            For an interactive visualization of what the parameters represent, see</span>
+
+<span class="sd">            https://www.desmos.com/3d/4agexlbubf,</span>
+
+<span class="sd">            </span>
+<span class="sd">            where ``rho`` is :math:`\\rho_l` and ``phi`` is :math:`\\phi_l`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">coordinates</span> <span class="o">=</span> <span class="p">[</span><span class="n">CAMERA_LENGTH</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">),</span>
+                       <span class="n">CAMERA_LENGTH</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">),</span>
+                       <span class="n">CAMERA_LENGTH</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">rho</span><span class="p">)]</span>
+        
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">pixels_to_mm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        
+        <span class="c1"># Coordinates of the camera lens</span>
+        <span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">cz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">LFM</span><span class="p">)</span>
+        
+        <span class="n">cx</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">CO</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">cy</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">CO</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">cz</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">CO</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        
+        <span class="c1"># Cartesian vector components from the chip to the camera lens</span>
+        <span class="n">rx</span> <span class="o">=</span> <span class="n">cx</span> <span class="o">-</span> <span class="n">CHIP_OFFSET_X</span> <span class="o">-</span> <span class="n">x</span>
+        <span class="n">ry</span> <span class="o">=</span> <span class="n">cy</span> <span class="o">+</span> <span class="n">CHIP_OFFSET_Y</span> <span class="o">-</span> <span class="n">y</span>
+        <span class="n">rz</span> <span class="o">=</span> <span class="n">cz</span> <span class="o">+</span> <span class="n">CHIP_OFFSET_Z</span>
+
+        <span class="k">return</span> <span class="n">rx</span><span class="p">,</span> <span class="n">ry</span><span class="p">,</span> <span class="n">rz</span></div>
+
+
+<div class="viewcode-block" id="CameraPosition.apertureRadii">
+<a class="viewcode-back" href="../camera.html#camera.CameraPosition.apertureRadii">[docs]</a>
+    <span class="k">def</span> <span class="nf">apertureRadii</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rho</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the radius at which the camera vector intersects the bottom, center, and top of the aperture.</span>
+<span class="sd">        This can be compared to the radius of the aperture at the bottom, center, and top to determine if the point on the chip is visible from the camera given the camera position and the position of the aperture.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            x (float): </span>
+<span class="sd">                The x coordinate of the point on the chip in pixels, with the origin at the top-left corner of the chip.</span>
+<span class="sd">            y (float): </span>
+<span class="sd">                The y coordinate of the point on the chip in pixels, with the origin at the top-left corner of the chip.</span>
+<span class="sd">            rho (float): </span>
+<span class="sd">                The angle between the point on the camera lens and the center of the camera lens.</span>
+<span class="sd">            phi (float): </span>
+<span class="sd">                The angle of rotation about the center of the camera lens.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple (float, float, float): A tuple containing the radii at which the camera vector intersects the bottom, center, and top of the aperture in millimeters.</span>
+
+<span class="sd">        .. note::</span>
+<span class="sd">            For an interactive visualization of what the parameters represent, see</span>
+
+<span class="sd">            https://www.desmos.com/3d/4agexlbubf,</span>
+
+<span class="sd">            </span>
+<span class="sd">            where ``rho`` is :math:`\\rho_l` and ``phi`` is :math:`\\phi_l`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">rx</span><span class="p">,</span> <span class="n">ry</span><span class="p">,</span> <span class="n">rz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cameraChipVector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span>
+
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">pixels_to_mm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        
+        <span class="c1"># Deterimes the angle of the point on the camera to the chip from the vertical</span>
+        <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">rx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">ry</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="n">rz</span><span class="p">)</span>
+
+        <span class="c1"># Find the x and y coordinates of the center of the aperture from the sample origin</span>
+        <span class="n">aperture_x</span> <span class="o">=</span> <span class="n">APERTURE_DISTANCE</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">APERTURE_ANGLE</span><span class="p">)</span> <span class="o">-</span> <span class="n">CHIP_OFFSET_X</span> <span class="o">-</span> <span class="n">x</span>
+        <span class="n">aperture_y</span> <span class="o">=</span> <span class="n">APERTURE_DISTANCE</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">APERTURE_ANGLE</span><span class="p">)</span> <span class="o">+</span> <span class="n">CHIP_OFFSET_Y</span> <span class="o">-</span> <span class="n">y</span>
+
+        <span class="c1"># Calculate the radius (with center at the aperture center) at which the camera vector intersects the bottom and top of the aperture</span>
+        <span class="n">radius_u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(((</span><span class="n">rx</span> <span class="o">*</span> <span class="n">UPPER_APERTURE_HEIGHT</span> <span class="o">/</span> <span class="n">rz</span><span class="p">)</span> <span class="o">-</span> <span class="n">aperture_x</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">((</span><span class="n">ry</span> <span class="o">*</span> <span class="n">UPPER_APERTURE_HEIGHT</span> <span class="o">/</span> <span class="n">rz</span><span class="p">)</span> <span class="o">-</span> <span class="n">aperture_y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">radius_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(((</span><span class="n">rx</span> <span class="o">*</span> <span class="n">CENTER_APERTURE_HEIGHT</span> <span class="o">/</span> <span class="n">rz</span><span class="p">)</span> <span class="o">-</span> <span class="n">aperture_x</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">((</span><span class="n">ry</span> <span class="o">*</span> <span class="n">CENTER_APERTURE_HEIGHT</span> <span class="o">/</span> <span class="n">rz</span><span class="p">)</span> <span class="o">-</span> <span class="n">aperture_y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">radius_l</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(((</span><span class="n">rx</span> <span class="o">*</span> <span class="n">LOWER_APERTURE_HEIGHT</span> <span class="o">/</span> <span class="n">rz</span><span class="p">)</span> <span class="o">-</span> <span class="n">aperture_x</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">((</span><span class="n">ry</span> <span class="o">*</span> <span class="n">LOWER_APERTURE_HEIGHT</span> <span class="o">/</span> <span class="n">rz</span><span class="p">)</span> <span class="o">-</span> <span class="n">aperture_y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">radius_l</span><span class="p">,</span> <span class="n">radius_c</span><span class="p">,</span> <span class="n">radius_u</span></div>
+</div>
+
+    
+
+
+<span class="n">ORIGINAL_CAMERA_POSITION</span> <span class="o">=</span> <span class="n">CameraPosition</span><span class="p">(</span><span class="n">LID_ANGLE</span><span class="p">,</span> <span class="n">CAMERA_ANGLE</span><span class="p">,</span> <span class="n">CAMERA_HEIGHT</span><span class="p">,</span> <span class="p">[[</span><span class="mi">455</span><span class="p">,</span><span class="mi">327</span><span class="p">],[</span><span class="mi">1038</span><span class="p">,</span><span class="mi">311</span><span class="p">],[</span><span class="mi">474</span><span class="p">,</span><span class="mi">798</span><span class="p">],[</span><span class="mi">1034</span><span class="p">,</span><span class="mi">744</span><span class="p">]])</span>
+<span class="sd">&quot;&quot;&quot;Original camera position left from the 24/25 work term. Used until August 26, 2025 when investigations into camera position began.&quot;&quot;&quot;</span>
+<span class="n">AUGUST25_CAMERA_POSITION</span> <span class="o">=</span> <span class="n">CameraPosition</span><span class="p">(</span><span class="n">LID_ANGLE</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="mi">14</span> <span class="o">/</span> <span class="mi">90</span><span class="p">),</span> <span class="n">CAMERA_ANGLE</span><span class="p">,</span> <span class="n">CAMERA_HEIGHT</span><span class="p">,</span> <span class="p">[[</span><span class="mi">102</span><span class="p">,</span><span class="mi">94</span><span class="p">],[</span><span class="mi">326</span><span class="p">,</span><span class="mi">85</span><span class="p">],[</span><span class="mi">329</span><span class="p">,</span><span class="mi">249</span><span class="p">],[</span><span class="mi">115</span><span class="p">,</span><span class="mi">272</span><span class="p">]])</span>
+<span class="sd">&quot;&quot;&quot;Camera position used from August 2025 to January 2026.&quot;&quot;&quot;</span>
+<span class="n">JANUARY26_CAMERA_POSITION</span> <span class="o">=</span> <span class="n">CameraPosition</span><span class="p">(</span><span class="n">LID_ANGLE</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="mi">14</span> <span class="o">/</span> <span class="mi">90</span><span class="p">),</span> <span class="n">CAMERA_ANGLE</span><span class="p">,</span> <span class="n">CAMERA_HEIGHT</span><span class="p">,</span> <span class="p">[[</span><span class="mi">48</span><span class="p">,</span><span class="mi">65</span><span class="p">],[</span><span class="mi">287</span><span class="p">,</span><span class="mi">49</span><span class="p">],[</span><span class="mi">295</span><span class="p">,</span><span class="mi">227</span><span class="p">],[</span><span class="mi">65</span><span class="p">,</span><span class="mi">249</span><span class="p">]])</span>
+<span class="sd">&quot;&quot;&quot;Camera position used from January 2026 to March 2026.&quot;&quot;&quot;</span>
+<span class="n">MARCH26_CAMERA_POSITION</span> <span class="o">=</span> <span class="n">CameraPosition</span><span class="p">(</span><span class="n">LID_ANGLE</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="mi">14</span> <span class="o">/</span> <span class="mi">90</span><span class="p">),</span> <span class="n">CAMERA_ANGLE</span><span class="p">,</span> <span class="n">CAMERA_HEIGHT</span><span class="p">,</span> <span class="p">[[</span><span class="mi">65</span><span class="p">,</span><span class="mi">65</span><span class="p">],[</span><span class="mi">304</span><span class="p">,</span><span class="mi">50</span><span class="p">],[</span><span class="mi">307</span><span class="p">,</span><span class="mi">225</span><span class="p">],[</span><span class="mi">79</span><span class="p">,</span><span class="mi">248</span><span class="p">]])</span>
+<span class="sd">&quot;&quot;&quot;Camera position used from March 2026 to April 2026.&quot;&quot;&quot;</span>
+<span class="n">APRIL26_CAMERA_POSITION</span> <span class="o">=</span> <span class="n">CameraPosition</span><span class="p">(</span><span class="n">LID_ANGLE</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="mi">14</span> <span class="o">/</span> <span class="mi">90</span><span class="p">),</span> <span class="n">CAMERA_ANGLE</span><span class="p">,</span> <span class="n">CAMERA_HEIGHT</span><span class="p">,</span> <span class="p">[[</span><span class="mi">66</span><span class="p">,</span><span class="mi">68</span><span class="p">],[</span><span class="mi">298</span><span class="p">,</span><span class="mi">46</span><span class="p">],[</span><span class="mi">316</span><span class="p">,</span><span class="mi">222</span><span class="p">],[</span><span class="mi">87</span><span class="p">,</span><span class="mi">252</span><span class="p">]])</span>
+<span class="sd">&quot;&quot;&quot;Camera position used from April 2026 to May 2026.&quot;&quot;&quot;</span>
+
+
+
+
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright May 2026, Caleb Lowe.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

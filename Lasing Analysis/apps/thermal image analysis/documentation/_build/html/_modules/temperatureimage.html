@@ -1,0 +1,1319 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>temperatureimage &#8212; Thermal Image Analysis Documentation 2026 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=fc6fd62b"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/temperatureimage';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Thermal Image Analysis.png" class="logo__image only-light" alt="Thermal Image Analysis Documentation 2026 documentation - Home"/>
+    <img src="../_static/Thermal Image Analysis.png" class="logo__image only-dark pst-js-only" alt="Thermal Image Analysis Documentation 2026 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../camera.html">
+    camera.py
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../optrisROI.html">
+    optrisROI.py
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../temperatureimage.html">
+    temperatureimage.py
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../oldstuff.html">
+    Pre2025 and Deprecated Files
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../camera.html">
+    camera.py
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../optrisROI.html">
+    optrisROI.py
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../temperatureimage.html">
+    temperatureimage.py
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../oldstuff.html">
+    Pre2025 and Deprecated Files
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">temperatureimage</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for temperatureimage</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">perspectivemap</span> <span class="k">as</span> <span class="nn">pm</span>
+<span class="kn">import</span> <span class="nn">optrisROI</span>
+<span class="kn">import</span> <span class="nn">camera</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+<span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">median_filter</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LinearSegmentedColormap</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+<span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">rich.progress</span> <span class="kn">import</span> <span class="n">Progress</span>
+<span class="kn">from</span> <span class="nn">rich.console</span> <span class="kn">import</span> <span class="n">Console</span>
+
+
+<span class="n">AMBIENT_TEMPERATURE</span> <span class="o">=</span> <span class="mf">299.15</span> <span class="c1"># Kelvin, ambient temperature</span>
+<span class="n">KELVIN_OFFSET</span> <span class="o">=</span> <span class="mf">273.15</span>
+
+<span class="c1"># Create &quot;iron&quot; colormap</span>
+<span class="n">IRON_RAW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;C:/Users/ssuub/Desktop/EDET80k_Damage/Lasing Analysis/apps/thermal image analysis/Iron Color Palette.png&quot;</span><span class="p">)))</span>
+<span class="n">IRON</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;iron&#39;</span><span class="p">,</span> <span class="n">IRON_RAW</span> <span class="o">/</span> <span class="mi">255</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">intensity</span><span class="p">(</span><span class="n">temperatures</span><span class="p">):</span>
+    <span class="c1"># Convert temperature values to intensity values using Stefan-Boltzmann law</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">temperatures</span> <span class="o">+</span> <span class="n">KELVIN_OFFSET</span><span class="p">)</span> <span class="o">**</span> <span class="mi">4</span>
+
+<span class="k">def</span> <span class="nf">temperature</span><span class="p">(</span><span class="n">intensities</span><span class="p">):</span>
+    <span class="c1"># Convert intensity values to temperature values using Stefan-Boltzmann law</span>
+    <span class="k">return</span> <span class="n">intensities</span> <span class="o">**</span> <span class="mf">0.25</span> <span class="o">-</span> <span class="n">KELVIN_OFFSET</span>
+
+
+<div class="viewcode-block" id="TemperatureSet">
+<a class="viewcode-back" href="../TemperatureSet.html#temperatureimage.TemperatureSet">[docs]</a>
+<span class="k">class</span> <span class="nc">TemperatureSet</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a complete dataset object (temperature reading and camera position).</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        data (array_like or string):</span>
+<span class="sd">            The temperature data, either as a numpy array or a path to a CSV file.</span>
+<span class="sd">        label (str):</span>
+<span class="sd">            A label for the dataset. This will be the title of any rendered images.</span>
+<span class="sd">        cp (camera.CameraPosition, optional):</span>
+<span class="sd">            The position of the camera when the temperature data was collected.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        TemperatureSet: a TemperatureSet object containing the temperature data and camera position.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">cp</span><span class="p">:</span><span class="n">camera</span><span class="o">.</span><span class="n">CameraPosition</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cp</span> <span class="o">=</span> <span class="n">cp</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="c1"># Load raw data from CSV</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+                <span class="n">raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)))</span>
+
+            <span class="n">temperature_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">raw</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">raw</span><span class="p">)):</span>
+                <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+                    <span class="n">temperature_data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">temperature_data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">temperature_data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initial_width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initial_height</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maxtemp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">temperature_data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mintemp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">temperature_data</span><span class="p">)</span>
+
+        <span class="c1"># Correction flags</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">perspective</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lambertian</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">occlusion</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="c1"># Fitting storage</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fits</span> <span class="o">=</span> <span class="p">{}</span>
+
+
+
+    <span class="c1">#=======================================================================================</span>
+    <span class="c1"># Basic arithmetic operations for TemperatureSet objects</span>
+    <span class="c1">#=======================================================================================</span>
+    
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">TemperatureSet</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;TemperatureSets must have the same shape to be added&quot;</span><span class="p">)</span>
+            <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">data</span>
+            <span class="k">return</span> <span class="n">TemperatureSet</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">+</span> <span class="s2">&quot; + &quot;</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+            <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">other</span>
+            <span class="k">return</span> <span class="n">TemperatureSet</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Can only add TemperatureSet or scalar to TemperatureSet&quot;</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">TemperatureSet</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;TemperatureSets must have the same shape to be subtracted&quot;</span><span class="p">)</span>
+            <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">data</span>
+            <span class="k">return</span> <span class="n">TemperatureSet</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">+</span> <span class="s2">&quot; - &quot;</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+            <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">-</span> <span class="n">other</span>
+            <span class="k">return</span> <span class="n">TemperatureSet</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Can only subtract TemperatureSet or scalar from TemperatureSet&quot;</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">TemperatureSet</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;TemperatureSets must have the same shape to be multiplied&quot;</span><span class="p">)</span>
+            <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">data</span>
+            <span class="k">return</span> <span class="n">TemperatureSet</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">+</span> <span class="s2">&quot; * &quot;</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+            <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">other</span>
+            <span class="k">return</span> <span class="n">TemperatureSet</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">+</span> <span class="s2">&quot; * &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">other</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Can only multiply TemperatureSet by TemperatureSet or a scalar&quot;</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">TemperatureSet</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;TemperatureSets must have the same shape to be divided&quot;</span><span class="p">)</span>
+            <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">/</span> <span class="n">other</span><span class="o">.</span><span class="n">data</span>
+            <span class="k">return</span> <span class="n">TemperatureSet</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">+</span> <span class="s2">&quot; / &quot;</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+            <span class="n">new_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">/</span> <span class="n">other</span>
+            <span class="k">return</span> <span class="n">TemperatureSet</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">+</span> <span class="s2">&quot; / &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">other</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Can only divide TemperatureSet by TemperatureSet or a scalar&quot;</span><span class="p">)</span>
+    
+    <span class="c1">#=======================================================================================</span>
+    <span class="c1"># Basic data management functions</span>
+    <span class="c1">#=======================================================================================</span>
+
+<div class="viewcode-block" id="TemperatureSet.save">
+<a class="viewcode-back" href="../TemperatureSet.html#temperatureimage.TemperatureSet.save">[docs]</a>
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Save temperature data to CSV</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            filepath :string</span>
+<span class="sd">                The path to the CSV file where the temperature data will be saved.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+            <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)):</span>
+                <span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]))]</span>
+                <span class="n">row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+                <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">row</span><span class="p">)</span></div>
+
+    
+
+<div class="viewcode-block" id="TemperatureSet.setTitle">
+<a class="viewcode-back" href="../TemperatureSet.html#temperatureimage.TemperatureSet.setTitle">[docs]</a>
+    <span class="k">def</span> <span class="nf">setTitle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the label for the dataset. This will be the title of any rendered images.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            title (string):</span>
+<span class="sd">                The new label for the dataset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">title</span></div>
+
+        
+<div class="viewcode-block" id="TemperatureSet.shape">
+<a class="viewcode-back" href="../TemperatureSet.html#temperatureimage.TemperatureSet.shape">[docs]</a>
+    <span class="k">def</span> <span class="nf">shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the shape of the temperature data as a tuple (height, width).</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: A tuple containing the height and width of the temperature data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_refreshTempExtrema</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mintemp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">&gt;</span> <span class="n">AMBIENT_TEMPERATURE</span> <span class="o">-</span> <span class="n">KELVIN_OFFSET</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maxtemp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+<div class="viewcode-block" id="TemperatureSet.getMaxTemp">
+<a class="viewcode-back" href="../TemperatureSet.html#temperatureimage.TemperatureSet.getMaxTemp">[docs]</a>
+    <span class="k">def</span> <span class="nf">getMaxTemp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">roi</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the maximum temperature in the dataset, optionally within a specified ROI.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            roi (optrisROI.ROI, optional):</span>
+<span class="sd">                The region of interest within which to calculate the maximum temperature. If None, the maximum temperature will be calculated for the entire dataset.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: The maximum temperature.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">roi</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">maxTemp</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)):</span>
+                <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                    <span class="k">if</span> <span class="n">roi</span><span class="o">.</span><span class="n">inRoi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">maxTemp</span><span class="p">:</span>
+                            <span class="n">maxTemp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">maxTemp</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">maxtemp</span></div>
+
+        
+<div class="viewcode-block" id="TemperatureSet.getMinTemp">
+<a class="viewcode-back" href="../TemperatureSet.html#temperatureimage.TemperatureSet.getMinTemp">[docs]</a>
+    <span class="k">def</span> <span class="nf">getMinTemp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">roi</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the minimum temperature in the dataset, optionally within a specified ROI.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            roi (optrisROI.ROI, optional):</span>
+<span class="sd">                The region of interest within which to calculate the minimum temperature. If None, the minimum temperature will be calculated for the entire dataset.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: The minimum temperature.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">roi</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">minTemp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)):</span>
+                <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                    <span class="k">if</span> <span class="n">roi</span><span class="o">.</span><span class="n">inRoi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">minTemp</span><span class="p">:</span>
+                            <span class="n">minTemp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">minTemp</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mintemp</span></div>
+
+        
+    <span class="c1">#=======================================================================================</span>
+    <span class="c1"># Correction functions (perspective, lambertian, occlusion)</span>
+    <span class="c1">#=======================================================================================</span>
+        
+<div class="viewcode-block" id="TemperatureSet.showCorrections">
+<a class="viewcode-back" href="../TemperatureSet.html#temperatureimage.TemperatureSet.showCorrections">[docs]</a>
+    <span class="k">def</span> <span class="nf">showCorrections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Print which corrections have been applied to the dataset.&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Perspective Correction Applied: &quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">perspective</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lambertian Correction Applied: &quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lambertian</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Occlusion Correction Applied: &quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">occlusion</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TemperatureSet.perspectiveCorrect">
+<a class="viewcode-back" href="../TemperatureSet.html#temperatureimage.TemperatureSet.perspectiveCorrect">[docs]</a>
+    <span class="k">def</span> <span class="nf">perspectiveCorrect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cp</span><span class="p">:</span> <span class="n">camera</span><span class="o">.</span><span class="n">CameraPosition</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply perspective correction to the dataset using the camera position.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            cp (camera.CameraPosition, optional):</span>
+<span class="sd">                The camera position used for perspective correction. If None, the camera position associated with the dataset will be used.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">cp</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cp</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;TemperatureSet.perspectiveCorrect() missing 1 required positional argument: &#39;cp&#39;&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cp</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">perspective</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Perspective correction has already been applied to this dataset&quot;</span><span class="p">)</span>
+
+        <span class="n">transform</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">imageTransform</span><span class="p">()</span>
+
+        <span class="c1"># Preliminary calculations to determine location of corners and check for image flips</span>
+        <span class="n">corners</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">initial_width</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">initial_width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial_height</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial_height</span><span class="p">]]],</span> <span class="n">dtype</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">transformed</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">perspectiveTransform</span><span class="p">(</span><span class="n">corners</span><span class="p">,</span> <span class="n">transform</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">transformed</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">transformed</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span> <span class="ow">or</span> <span class="p">(</span><span class="n">transformed</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">transformed</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Image Flipped Horizontally&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">transformed</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">transformed</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="ow">or</span> <span class="p">(</span><span class="n">transformed</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">transformed</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Image Flipped Vertically&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Correct intensity values for perspective</span>
+        <span class="n">spacial_corrected</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">warpPerspective</span><span class="p">(</span>
+            <span class="n">intensity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> <span class="n">transform</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">transformed</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,</span><span class="mi">0</span><span class="p">]))),</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">transformed</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,</span><span class="mi">1</span><span class="p">])))),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">INTER_LINEAR</span><span class="p">,</span> <span class="n">borderMode</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">BORDER_CONSTANT</span><span class="p">,</span> <span class="n">borderValue</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">temperature</span><span class="p">(</span><span class="n">spacial_corrected</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">perspective</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+
+
+<div class="viewcode-block" id="TemperatureSet.lambertianCorrect">
+<a class="viewcode-back" href="../TemperatureSet.html#temperatureimage.TemperatureSet.lambertianCorrect">[docs]</a>
+    <span class="k">def</span> <span class="nf">lambertianCorrect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">roi</span><span class="p">:</span><span class="n">optrisROI</span><span class="o">.</span><span class="n">ROI</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">cp</span><span class="p">:</span><span class="n">camera</span><span class="o">.</span><span class="n">CameraPosition</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Corrects for lower intensity readings for a lambertian emitter (eg. paper) based on the camera position.</span>
+<span class="sd">        </span>
+<span class="sd">            The intensity of light emitted by a lambertian emitter is given by</span>
+
+<span class="sd">            .. math:: </span>
+<span class="sd">                I=I_0\cos(θ)</span>
+
+<span class="sd">            where :math:`θ` is the angle between the surface normal and the line of sight to the viewer. </span>
+<span class="sd">            This function corrects for this effect by dividing the measured intensity by the cosine of this angle, which is calculated using the camera position.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            roi (optrisROI.ROI, optional):</span>
+<span class="sd">                The region of interest within which to apply lambertian correction. If None, lambertian correction will be applied to the entire dataset.</span>
+<span class="sd">            cp (camera.CameraPosition, optional):</span>
+<span class="sd">                The camera position used for lambertian correction. If None, the camera position associated with the dataset will be used.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">cp</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cp</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;TemperatureSet.lambertianCorrect() missing 1 required positional argument: &#39;cp&#39;&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cp</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">perspective</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Perspective correction has not been applied to this dataset. Lambertian correction may be inaccurate.&quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lambertian</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Lambertian correction has already been applied to this dataset&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)):</span>
+                    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">KELVIN_OFFSET</span><span class="p">:</span>
+                            <span class="k">continue</span>
+                        <span class="k">elif</span> <span class="n">roi</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">roi</span><span class="o">.</span><span class="n">inROI</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="c1"># Deterimes the angle of the point on the camera to the chip from the vertical</span>
+                            <span class="n">rx</span><span class="p">,</span> <span class="n">ry</span><span class="p">,</span> <span class="n">rz</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">cameraChipVector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+                            <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">rx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">ry</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="n">rz</span><span class="p">)</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">temperature</span><span class="p">(</span><span class="n">intensity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span><span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_refreshTempExtrema</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lambertian</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="c1"># Invalidate any existing fits</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fits</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
+
+
+        
+<div class="viewcode-block" id="TemperatureSet.occlusionCorrect">
+<a class="viewcode-back" href="../TemperatureSet.html#temperatureimage.TemperatureSet.occlusionCorrect">[docs]</a>
+    <span class="k">def</span> <span class="nf">occlusionCorrect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">roi</span><span class="p">:</span> <span class="n">optrisROI</span><span class="o">.</span><span class="n">ROI</span><span class="p">,</span> <span class="n">cp</span><span class="p">:</span> <span class="n">camera</span><span class="o">.</span><span class="n">CameraPosition</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">resolution</span> <span class="o">=</span> <span class="mi">5</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Corrects for lower intensity readings due to the vacuum chamber lid partially obscuring the view.</span>
+<span class="sd">        </span>
+<span class="sd">            Estimates the true temperature of a point based on the number of rays from the camera that are occluded by the lid. </span>
+<span class="sd">            Multiple ray paths are traced from each point of the dataset (assumed to be in the same plane as the chip) to a point on the camera lens, and the number of rays that are occluded by the lid is counted.</span>
+<span class="sd">            Occluded rays are assumed to be &quot;replaced&quot; by emission from the lid, which is assumed to be at ambient temperature.</span>
+<span class="sd">            The intensity is then corrected based on the fraction of rays that are occluded. </span>
+
+<span class="sd">            .. admonition:: Point Selection</span>
+<span class="sd">                :collapsible: closed</span>
+
+<span class="sd">                For each point in the dataset, :math:`R^2` rays are traced to the camera lens where :math:`R` is the resolution. Higher resolutions will result in more accurate corrections but will take longer to compute (:math:`O(R^2)` time complexity).</span>
+<span class="sd">                The set of points :math:`P_R` on the camera lens that are traced to is given by</span>
+
+<span class="sd">                .. math::</span>
+<span class="sd">                    P_R :=\\left\\{\\left(\\frac{\\operatorname{floor}\\left(\\sqrt{n}\\right)}{R-1}\\sin\\left(\\phi\\left(n\\right)\\right),\\frac{\\operatorname{floor}\\left(\\sqrt{n}\\right)}{R-1}\\cos\\left(\\phi\\left(n\\right)\\right)\\right)\\bigg|n=0,1,\\dots,R^2-1\\right\\}</span>
+
+<span class="sd">                where</span>
+
+<span class="sd">                .. math::</span>
+<span class="sd">                    \\phi\\left(n\\right) := \\frac{2\\pi n}{\\operatorname{floor}\\left(\\sqrt{n}\\right)}</span>
+
+<span class="sd">                For an interactive visualization of the selected points on the lens, see</span>
+<span class="sd">                https://www.desmos.com/calculator/rfuweg7pkd</span>
+
+<span class="sd">            .. admonition:: Occlusion Detection</span>
+<span class="sd">                :collapsible: closed</span>
+
+<span class="sd">                To determine whether a line from the camera to a point on the chip is occluded by the lid, we first find the equation of the circle(s) that describes the hole in our lid. </span>
+<span class="sd">                If the intersection of the line with the plane of the circle is outside the circle, then the ray is occluded.</span>
+
+<span class="sd">                The diameter and position of the holes have been measured and documented in the CAD files, but the lid angle and camera angle need to be measured for each new camera position.</span>
+
+<span class="sd">                For an interactive visualization of the occlusion, see</span>
+<span class="sd">                https://www.desmos.com/3d/4agexlbubf</span>
+<span class="sd">            </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            roi (optrisROI.ROI, optional):</span>
+<span class="sd">                The region of interest within which to apply occlusion correction. If None, occlusion correction will be applied to the entire dataset.</span>
+<span class="sd">            cp (camera.CameraPosition, optional):</span>
+<span class="sd">                The camera position used for occlusion correction. If None, the camera position associated with the dataset will be used.</span>
+<span class="sd">            resolution (int, optional):</span>
+<span class="sd">                The resolution of the occlusion correction.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">cp</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cp</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;TemperatureSet.occlusionCorrect() missing 1 required positional argument: &#39;cp&#39;&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cp</span>
+                
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">perspective</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Perspective correction has not been applied to this dataset. Lambertian correction may be inaccurate.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">occlusion</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Occlusion correction has already been applied to this dataset&quot;</span><span class="p">)</span>
+        <span class="c1"># count how many rays are occluded given the resolution</span>
+        <span class="n">maxRho</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">getMaxRho</span><span class="p">()</span>
+
+        <span class="n">numPoints</span> <span class="o">=</span> <span class="n">resolution</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="n">deltaPoints</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span>
+
+
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)):</span>
+                    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                        <span class="k">if</span> <span class="n">roi</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">roi</span><span class="o">.</span><span class="n">inROI</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">occludedCounter</span> <span class="o">=</span> <span class="mi">0</span>
+                            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">resolution</span><span class="p">):</span>
+                                <span class="n">rho</span> <span class="o">=</span> <span class="n">maxRho</span> <span class="o">*</span> <span class="n">i</span> <span class="o">/</span> <span class="n">resolution</span>
+                                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">deltaPoints</span><span class="p">(</span><span class="n">i</span><span class="p">)):</span>
+                                    <span class="n">phi</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">deltaPoints</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                                    <span class="n">radius_l</span><span class="p">,</span> <span class="n">radius_c</span><span class="p">,</span> <span class="n">radius_u</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">apertureRadii</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span>
+                                    <span class="k">if</span> <span class="p">(</span><span class="n">radius_l</span> <span class="o">&gt;</span> <span class="n">camera</span><span class="o">.</span><span class="n">LOWER_APERTURE_DIAMETER</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">radius_c</span> <span class="o">&gt;</span> <span class="n">camera</span><span class="o">.</span><span class="n">LOWER_APERTURE_DIAMETER</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">radius_u</span> <span class="o">&gt;</span> <span class="n">camera</span><span class="o">.</span><span class="n">UPPER_APERTURE_DIAMETER</span> <span class="o">/</span> <span class="mi">2</span><span class="p">):</span>
+                                        <span class="n">occludedCounter</span> <span class="o">+=</span> <span class="mi">1</span>
+                            
+                            <span class="k">if</span> <span class="n">occludedCounter</span> <span class="o">&gt;=</span> <span class="n">numPoints</span><span class="p">:</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span>  <span class="c1"># All rays occluded; return measured temperature</span>
+                            <span class="k">elif</span> <span class="n">occludedCounter</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="c1"># No occlusion; return measured temperature</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">temperature</span><span class="p">((</span><span class="n">intensity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span> <span class="o">*</span> <span class="n">numPoints</span> <span class="o">-</span> <span class="n">AMBIENT_TEMPERATURE</span> <span class="o">**</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">occludedCounter</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">numPoints</span> <span class="o">-</span> <span class="n">occludedCounter</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_refreshTempExtrema</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">occlusion</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="c1"># Invalidate any existing fits</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fits</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="TemperatureSet.median_filter">
+<a class="viewcode-back" href="../TemperatureSet.html#temperatureimage.TemperatureSet.median_filter">[docs]</a>
+    <span class="k">def</span> <span class="nf">median_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kernel_size</span> <span class="o">=</span> <span class="mi">3</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply a median filter to the temperature data to reduce noise.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            kernel_size (int, optional):</span>
+<span class="sd">                The size of the kernel used for the median filter. Must be an odd integer. Default value is 3.&quot;&quot;&quot;</span>
+        
+        <span class="n">filtered</span> <span class="o">=</span> <span class="n">median_filter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">filtered</span></div>
+
+
+    <span class="c1">#=======================================================================================</span>
+    <span class="c1"># Fitting functions</span>
+    <span class="c1">#=======================================================================================</span>
+
+<div class="viewcode-block" id="TemperatureSet.polyfit">
+<a class="viewcode-back" href="../TemperatureSet.html#temperatureimage.TemperatureSet.polyfit">[docs]</a>
+    <span class="k">def</span> <span class="nf">polyfit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">degree</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">roi</span><span class="p">:</span> <span class="n">optrisROI</span><span class="o">.</span><span class="n">ROI</span> <span class="o">=</span> <span class="n">optrisROI</span><span class="o">.</span><span class="n">CHIP</span><span class="p">):</span>    
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Fit a polynomial surface to the temperature data within the ROI</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            degree (int, optional):</span>
+<span class="sd">                The degree of the polynomial fit. Default value is 3.</span>
+<span class="sd">            roi (optrisROI.ROI, optional):</span>
+<span class="sd">                The region of interest within which to apply the polynomial fit. If None, the polynomial fit will be applied to the entire dataset.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple (TemperatureSet, function): A tuple containing a TemperatureSet with the fitted temperature data and the fitting function.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">bound</span><span class="p">)</span> <span class="k">for</span> <span class="n">bound</span> <span class="ow">in</span> <span class="n">roi</span><span class="o">.</span><span class="n">getBounds</span><span class="p">()]</span>
+        <span class="n">xvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">yvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ymin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">-</span> <span class="n">ymin</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xvals</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">yvals</span><span class="p">))</span>
+        <span class="n">Z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">xmin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span><span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span><span class="n">ymax</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">degree</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fits</span><span class="p">:</span>
+            <span class="n">fitfunc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fits</span><span class="p">[</span><span class="n">degree</span><span class="p">]</span><span class="o">.</span><span class="n">function</span>
+            <span class="n">fit</span> <span class="o">=</span> <span class="n">fitfunc</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Existing fit of degree&quot;</span> <span class="o">+</span> <span class="n">degree</span> <span class="o">+</span> <span class="s2">&quot; loaded&quot;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">def</span> <span class="nf">poly2d</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+                <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">M</span>
+                <span class="n">prms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">])</span>
+                <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">prms</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">prms</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">:]</span>
+                <span class="n">prms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">prms</span><span class="p">,</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">prms</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">prms</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+                <span class="n">degree</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">prms</span><span class="p">)))</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="n">prms</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">degree</span><span class="p">,</span> <span class="n">degree</span><span class="p">)</span>
+                <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polynomial</span><span class="o">.</span><span class="n">polynomial</span><span class="o">.</span><span class="n">polyval2d</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="n">y0</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">z</span>
+
+            <span class="c1"># Initial guesses to the fit parameters.</span>
+            <span class="n">guess_prms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">degree</span><span class="p">,</span><span class="n">degree</span><span class="p">))</span>
+            <span class="n">guess_prms</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">maxtemp</span>
+            <span class="c1"># Flatten the initial guess parameter list.</span>
+            <span class="n">p0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">p</span> <span class="k">for</span> <span class="n">prms</span> <span class="ow">in</span> <span class="n">guess_prms</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">prms</span><span class="p">],</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">160</span><span class="p">))</span>
+
+            <span class="c1"># We need to ravel the meshgrids of X, Y points to a pair of 1-D arrays.</span>
+            <span class="n">xdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">Y</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
+
+            <span class="c1"># Do the fit, using our custom _gaussian function which understands our</span>
+            <span class="c1"># flattened (ravelled) ordering of the data points.</span>
+            <span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">poly2d</span><span class="p">,</span> <span class="n">xdata</span><span class="p">,</span> <span class="n">Z</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">p0</span><span class="p">)</span>
+            <span class="k">def</span> <span class="nf">fitfunc</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">poly2d</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="o">*</span><span class="n">popt</span><span class="p">)</span>
+            <span class="n">fit</span> <span class="o">=</span> <span class="n">fitfunc</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+            <span class="n">rms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">Z</span> <span class="o">-</span> <span class="n">fit</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;RMS residual =&#39;</span><span class="p">,</span> <span class="n">rms</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">fits</span><span class="p">[</span><span class="n">degree</span><span class="p">]</span> <span class="o">=</span> <span class="n">TemperaturePolyFit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">xmin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span><span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span><span class="n">ymax</span><span class="p">],</span> <span class="n">degree</span><span class="p">,</span> <span class="n">popt</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">TemperatureSet</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">+</span> <span class="s2">&quot; (Polyfit Degree &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">degree</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span><span class="p">),</span> <span class="n">fitfunc</span></div>
+
+
+    <span class="c1">#=======================================================================================</span>
+    <span class="c1"># Rendering functions</span>
+    <span class="c1">#=======================================================================================</span>
+
+<div class="viewcode-block" id="TemperatureSet.render">
+<a class="viewcode-back" href="../TemperatureSet.html#temperatureimage.TemperatureSet.render">[docs]</a>
+    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">roi</span><span class="p">:</span><span class="n">optrisROI</span><span class="o">.</span><span class="n">ROI</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">IRON</span><span class="p">,</span> <span class="n">vmin</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">crop</span> <span class="o">=</span> <span class="n">optrisROI</span><span class="o">.</span><span class="n">CHIP</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Render the temperature data as a 2D image.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            roi (optrisROI.ROI, optional):</span>
+<span class="sd">                The region of interest within which to render the temperature data. If None, the entire dataset will be rendered.</span>
+<span class="sd">            cmap (string or matplotlib colormap, optional):</span>
+<span class="sd">                The colormap to use for rendering. Default is &#39;iron&#39;.</span>
+<span class="sd">            vmin (float, optional):</span>
+<span class="sd">                The minimum temperature for the color scale. If None, the minimum temperature in the dataset will be used.</span>
+<span class="sd">            vmax (float, optional):</span>
+<span class="sd">                The maximum temperature for the color scale. If None, the maximum temperature in the dataset will be used.</span>
+<span class="sd">            crop (optrisROI.ROI or str, optional):</span>
+<span class="sd">                The region to crop the image to. If an ROI is provided, it will be centered in the image. If &#39;FULL&#39;, the full image will be rendered.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">cmap</span> <span class="o">!=</span> <span class="n">IRON</span><span class="p">:</span>
+            <span class="n">cmap</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">colormaps</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">vmin</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">vmin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mintemp</span>
+        <span class="k">if</span> <span class="n">vmax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">vmax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">maxtemp</span>
+
+        <span class="c1"># If crop is an ROI, center it in the image and crop to the size of the initial image. If crop is &quot;FULL&quot;, render the full image without cropping.</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">crop</span><span class="p">,</span> <span class="n">optrisROI</span><span class="o">.</span><span class="n">ROI</span><span class="p">):</span>
+            <span class="n">roi_center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="n">crop</span><span class="o">.</span><span class="n">xmin</span> <span class="o">+</span> <span class="n">crop</span><span class="o">.</span><span class="n">xmax</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">crop</span><span class="o">.</span><span class="n">ymin</span> <span class="o">+</span> <span class="n">crop</span><span class="o">.</span><span class="n">ymax</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">])</span>
+            <span class="n">image_center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">initial_height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial_width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">])</span>
+            <span class="n">offset</span> <span class="o">=</span> <span class="p">(</span><span class="n">roi_center</span> <span class="o">-</span> <span class="n">image_center</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+            <span class="c1"># Fill in out of bounds pixels with ambient temperature</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">offset</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">offset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial_height</span><span class="p">,</span> <span class="n">offset</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span><span class="n">offset</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial_width</span><span class="p">]</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">((</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">offset</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">offset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial_height</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">))),</span> <span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">offset</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">offset</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial_width</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])))),</span> <span class="n">constant_values</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">crop</span> <span class="o">!=</span> <span class="s2">&quot;FULL&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Invalid crop parameter. Use an optrisROI.ROI object or &#39;FULL&#39;.&quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">roi</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">imageData</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">img</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">img</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+            <span class="n">colorTemp</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">temp</span><span class="p">:</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">cmap</span><span class="p">((</span><span class="n">temp</span> <span class="o">-</span> <span class="n">vmin</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">vmax</span> <span class="o">-</span> <span class="n">vmin</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">255</span><span class="p">),</span> 
+                                      <span class="nb">int</span><span class="p">(</span><span class="n">cmap</span><span class="p">((</span><span class="n">temp</span> <span class="o">-</span> <span class="n">vmin</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">vmax</span> <span class="o">-</span> <span class="n">vmin</span><span class="p">))[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">255</span><span class="p">),</span> 
+                                      <span class="nb">int</span><span class="p">(</span><span class="n">cmap</span><span class="p">((</span><span class="n">temp</span> <span class="o">-</span> <span class="n">vmin</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">vmax</span> <span class="o">-</span> <span class="n">vmin</span><span class="p">))[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="mi">255</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">img</span><span class="p">)):</span>
+                    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">img</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                        <span class="k">if</span> <span class="n">roi</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">roi</span><span class="o">.</span><span class="n">onBorder</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">offset</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">+</span> <span class="n">offset</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+                            <span class="n">imageData</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">)</span>  <span class="c1"># Highlight ROI in white</span>
+                        <span class="c1"># elif roi != None and roi.inROI(x, y):</span>
+                        <span class="c1">#     imageData[x,y] = (0,255,0)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">imageData</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">colorTemp</span><span class="p">(</span><span class="n">img</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">imageData</span><span class="p">)</span>          
+
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Temperature (°C)&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+
+
+        <span class="c1"># max = np.max(img)</span>
+        <span class="c1"># min = np.min(img)</span>
+        <span class="c1"># return ((img - min) / (max - min)) * 256</span>
+
+
+<div class="viewcode-block" id="TemperatureSet.render3D">
+<a class="viewcode-back" href="../TemperatureSet.html#temperatureimage.TemperatureSet.render3D">[docs]</a>
+    <span class="k">def</span> <span class="nf">render3D</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">roi</span><span class="p">:</span> <span class="n">optrisROI</span><span class="o">.</span><span class="n">ROI</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Render the temperature data as a 3D surface plot using the plotly library.</span>
+
+<span class="sd">        .. note::</span>
+<span class="sd">            The plot often will not render / update. Restarting VS Code sometimes fixes the issue. Requires more investigation.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            roi (optrisROI.ROI, optional):</span>
+<span class="sd">                The region of interest within which to render the temperature data. If None, the entire dataset will be rendered.</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">roi</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">xmin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span><span class="nb">int</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">xmax</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">ymin</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span><span class="nb">int</span><span class="p">(</span><span class="n">roi</span><span class="o">.</span><span class="n">ymax</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">go</span><span class="o">.</span><span class="n">Surface</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Temperature (°C)&quot;</span><span class="p">))])</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">),</span> <span class="n">autosize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+                        <span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="mi">65</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">65</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">90</span><span class="p">))</span>
+
+        <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+</div>
+
+
+    
+
+
+        
+
+
+<div class="viewcode-block" id="TemperatureComposite">
+<a class="viewcode-back" href="../TemperatureSet.html#temperatureimage.TemperatureComposite">[docs]</a>
+<span class="k">class</span> <span class="nc">TemperatureComposite</span><span class="p">(</span><span class="n">TemperatureSet</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a composite temperature dataset by combining multiple TemperatureSet objects. </span>
+<span class="sd">    Can be used to create a more complete temperature map by combining multiple images taken from different angles or with different ROIs.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:    </span>
+<span class="sd">        datasets (list of TemperatureSet): </span>
+<span class="sd">            The list of TemperatureSet objects to be combined. All datasets must have the same shape.</span>
+<span class="sd">        rois (list of optrisROI.ROI or None):</span>
+<span class="sd">            The list of regions of interest for each dataset over which to combine data (as indicated by the mode). If None, the entire dataset will be used.</span>
+<span class="sd">        label (str):</span>
+<span class="sd">            The label for the composite temperature dataset. This will be the title of any rendered images.</span>
+<span class="sd">        mode (str, optional):</span>
+<span class="sd">            The mode for combining the datasets. Can be &#39;median&#39;, &#39;mean&#39;, or &#39;count&#39;. Default is &#39;median&#39;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">datasets</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span> <span class="n">rois</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;median&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">rois</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">datasets</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rois</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Number of datasets must match number of ROIs&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">datasets</span> <span class="o">=</span> <span class="n">datasets</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rois</span> <span class="o">=</span> <span class="n">rois</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span>
+
+        <span class="n">totaldata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">datasets</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">datasets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">datasets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+        <span class="k">with</span> <span class="n">Progress</span><span class="p">(</span><span class="n">console</span><span class="o">=</span><span class="n">Console</span><span class="p">(</span><span class="n">force_terminal</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">force_jupyter</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span> <span class="k">as</span> <span class="n">progress</span><span class="p">:</span>
+            <span class="n">task</span> <span class="o">=</span> <span class="n">progress</span><span class="o">.</span><span class="n">add_task</span><span class="p">(</span><span class="s2">&quot;Loading Data&quot;</span><span class="p">,</span> <span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">datasets</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">datasets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">datasets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">datasets</span><span class="p">)):</span>
+                <span class="n">totaldata</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+                <span class="n">progress</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">advance</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">datasets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">datasets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+        <span class="c1"># Create a composite dataset by combining the datasets</span>
+        <span class="n">composite_data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;median&#39;</span><span class="p">:</span>
+            <span class="n">combine_func</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;mean&#39;</span><span class="p">:</span>
+            <span class="n">combine_func</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;count&#39;</span><span class="p">:</span>
+            <span class="n">combine_func</span> <span class="o">=</span> <span class="nb">len</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Invalid mode for compositeTemperatureSet. Use &#39;median&#39;, &#39;mean&#39;, or &#39;count&#39;.&quot;</span><span class="p">)</span>
+        
+        <span class="k">with</span> <span class="n">Progress</span><span class="p">(</span><span class="n">console</span><span class="o">=</span><span class="n">Console</span><span class="p">(</span><span class="n">force_terminal</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">force_jupyter</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span> <span class="k">as</span> <span class="n">progress</span><span class="p">:</span>
+            <span class="n">task</span> <span class="o">=</span> <span class="n">progress</span><span class="o">.</span><span class="n">add_task</span><span class="p">(</span><span class="s2">&quot;Compositing Data&quot;</span><span class="p">,</span> <span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">totaldata</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">totaldata</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">totaldata</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])):</span>
+                <span class="n">xvals</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">totaldata</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                    <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">totaldata</span><span class="p">)):</span>
+                        <span class="k">if</span> <span class="n">rois</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">rois</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">inROI</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+                            <span class="k">continue</span>
+                        <span class="nb">list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">totaldata</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">xvals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AMBIENT_TEMPERATURE</span> <span class="o">-</span> <span class="n">KELVIN_OFFSET</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">xvals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">combine_func</span><span class="p">(</span><span class="nb">list</span><span class="p">))</span>
+                    <span class="n">progress</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">advance</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">composite_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xvals</span><span class="p">)</span>
+            
+
+            <span class="n">composite_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">swapaxes</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">composite_data</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">composite_data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maxtemp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">composite_data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mintemp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">composite_data</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">perspective</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lambertian</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">occlusion</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+
+<div class="viewcode-block" id="TemperatureModel">
+<a class="viewcode-back" href="../TemperatureModel.html#temperatureimage.TemperatureModel">[docs]</a>
+<span class="k">class</span> <span class="nc">TemperatureModel</span><span class="p">(</span><span class="n">TemperatureSet</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a TemperatureSet object based on a mathematical model of the temperature distribution. Can be used to test the effects of different distortions on a known temperature distribution.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        model_function (function):</span>
+<span class="sd">            A function that takes in x and y coordinates and returns a temperature value. The function should also take in any parameters needed for the model as keyword arguments.</span>
+<span class="sd">        parameters (dict):</span>
+<span class="sd">            A dictionary of parameters for the model function.</span>
+<span class="sd">        shape (tuple):</span>
+<span class="sd">            The shape of the array to be used for the temperature dataset.</span>
+<span class="sd">        label (str):</span>
+<span class="sd">            A label for the temperature dataset. This will be the title of any rendered images.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_function</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span><span class="nb">tuple</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_function</span> <span class="o">=</span> <span class="n">model_function</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span>
+
+        <span class="n">model_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+                <span class="n">model_data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">model_function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">parameters</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">model_data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maxtemp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">model_data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mintemp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">model_data</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">perspective</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lambertian</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">occlusion</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1">#=======================================================================================</span>
+    <span class="c1"># Error modelling functions (lambertian, occlusion)</span>
+    <span class="c1">#=======================================================================================</span>
+    
+<div class="viewcode-block" id="TemperatureModel.applyLambertian">
+<a class="viewcode-back" href="../TemperatureModel.html#temperatureimage.TemperatureModel.applyLambertian">[docs]</a>
+    <span class="k">def</span> <span class="nf">applyLambertian</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">roi</span><span class="p">:</span><span class="n">optrisROI</span><span class="o">.</span><span class="n">ROI</span><span class="p">,</span> <span class="n">cp</span><span class="p">:</span><span class="n">camera</span><span class="o">.</span><span class="n">CameraPosition</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Applies a lambertian distortion to the temperature data based on the camera position. This is the inverse of the lambertian correction function.</span>
+
+<span class="sd">            Parameters:</span>
+<span class="sd">                roi (optrisROI.ROI):</span>
+<span class="sd">                    The region of interest within which to apply the lambertian distortion. If None, lambertian distortion will be applied to the entire dataset.</span>
+<span class="sd">                cp (camera.CameraPosition):</span>
+<span class="sd">                    The camera position to be used for the lambertian distortion.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                <span class="k">if</span> <span class="n">roi</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">roi</span><span class="o">.</span><span class="n">inROI</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Deterimes the angle of the point on the camera to the chip from the vertical</span>
+                    <span class="n">rx</span><span class="p">,</span> <span class="n">ry</span><span class="p">,</span> <span class="n">rz</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">cameraChipVector</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+                    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">rx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">ry</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="n">rz</span><span class="p">)</span>
+                    <span class="n">trueTemp</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">**</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span> <span class="o">**</span> <span class="mf">0.25</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">trueTemp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_refreshTempExtrema</span><span class="p">()</span></div>
+
+
+        
+
+    <span class="k">def</span> <span class="nf">_pointOcclusion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">cp</span><span class="p">:</span><span class="n">camera</span><span class="o">.</span><span class="n">CameraPosition</span><span class="p">,</span> <span class="n">resolution</span> <span class="o">=</span> <span class="mi">5</span><span class="p">):</span>
+        <span class="c1"># count how many rays are occluded given the resolution</span>
+        <span class="c1"># helper function for applyOcclusion to calculate the occlusion distortion for a single point</span>
+        <span class="n">maxRho</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">getMaxRho</span><span class="p">()</span>
+
+        <span class="n">numPoints</span> <span class="o">=</span> <span class="n">resolution</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="n">deltaPoints</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">netIntensity</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># occludedCounter = 0</span>
+        <span class="c1"># for i in range(resolution):</span>
+        <span class="c1">#     rho = maxRho * i / resolution</span>
+        <span class="c1">#     for j in range(deltaPoints(i)):</span>
+        <span class="c1">#         phi = 2 * np.pi * (j + 0.5) / deltaPoints(i)</span>
+        <span class="c1">#         radius_l, radius_u = cp.apertureRadii(x, y, rho, phi)</span>
+        <span class="c1">#         if (radius_l &gt; camera.APERTURE_DIAMETER / 2) or (radius_u &gt; camera.APERTURE_DIAMETER / 2):</span>
+        <span class="c1">#             occludedCounter += 1</span>
+        
+        <span class="c1"># if occludedCounter &gt;= numPoints:</span>
+        <span class="c1">#     return self.data[x,y]  # All rays occluded; return measured temperature</span>
+        <span class="c1"># elif occludedCounter == 0:</span>
+        <span class="c1">#     return self.data[x,y] # No occlusion; return measured temperature</span>
+        <span class="c1"># else:</span>
+        <span class="c1">#     return temperature((intensity(self.data[x,y]) * numPoints - AMBIENT_TEMPERATURE ** 4 * occludedCounter) / (numPoints - occludedCounter))</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">resolution</span><span class="p">):</span>
+                <span class="n">rho</span> <span class="o">=</span> <span class="n">maxRho</span> <span class="o">*</span> <span class="n">i</span> <span class="o">/</span> <span class="n">resolution</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">deltaPoints</span><span class="p">(</span><span class="n">i</span><span class="p">)):</span>
+                    <span class="n">phi</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">deltaPoints</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                    <span class="n">radius_l</span><span class="p">,</span> <span class="n">radius_c</span><span class="p">,</span> <span class="n">radius_u</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">apertureRadii</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">radius_u</span> <span class="o">&gt;</span> <span class="n">camera</span><span class="o">.</span><span class="n">UPPER_APERTURE_DIAMETER</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">radius_c</span> <span class="o">&gt;</span> <span class="n">camera</span><span class="o">.</span><span class="n">LOWER_APERTURE_DIAMETER</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">radius_l</span> <span class="o">&gt;</span> <span class="n">camera</span><span class="o">.</span><span class="n">LOWER_APERTURE_DIAMETER</span> <span class="o">/</span> <span class="mi">2</span><span class="p">):</span>
+                        <span class="n">netIntensity</span> <span class="o">+=</span> <span class="n">AMBIENT_TEMPERATURE</span> <span class="o">**</span> <span class="mi">4</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">netIntensity</span> <span class="o">+=</span> <span class="n">intensity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span>
+        <span class="n">avgIntensity</span> <span class="o">=</span> <span class="n">netIntensity</span> <span class="o">/</span> <span class="n">resolution</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="k">return</span> <span class="n">temperature</span><span class="p">(</span><span class="n">avgIntensity</span><span class="p">)</span>
+    
+<div class="viewcode-block" id="TemperatureModel.applyOcclusion">
+<a class="viewcode-back" href="../TemperatureModel.html#temperatureimage.TemperatureModel.applyOcclusion">[docs]</a>
+    <span class="k">def</span> <span class="nf">applyOcclusion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">roi</span><span class="p">:</span><span class="n">optrisROI</span><span class="o">.</span><span class="n">ROI</span><span class="p">,</span> <span class="n">cp</span><span class="p">:</span><span class="n">camera</span><span class="o">.</span><span class="n">CameraPosition</span><span class="p">,</span> <span class="n">resolution</span> <span class="o">=</span> <span class="mi">5</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Applies occlusion distortion to the temperature data based on the camera position. This is an approximate inverse of the occlusion correction function.</span>
+
+<span class="sd">            Parameters:</span>
+<span class="sd">                roi (optrisROI.ROI):</span>
+<span class="sd">                    The region of interest within which to apply the occlusion distortion. If None, occlusion distortion will be applied to the entire dataset.</span>
+<span class="sd">                cp (camera.CameraPosition):</span>
+<span class="sd">                    The camera position to be used for the occlusion distortion.</span>
+<span class="sd">                resolution (int, optional):</span>
+<span class="sd">                    The resolution of the occlusion distortion. Higher resolutions will result in more accurate distortions but will take longer to compute (:math:`O(R^2)` time complexity). Default value is 5.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                <span class="k">if</span> <span class="n">roi</span> <span class="o">!=</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">roi</span><span class="o">.</span><span class="n">inROI</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pointOcclusion</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">resolution</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_refreshTempExtrema</span><span class="p">()</span></div>
+</div>
+
+
+<div class="viewcode-block" id="TemperatureFit">
+<a class="viewcode-back" href="../TemperatureModel.html#temperatureimage.TemperatureFit">[docs]</a>
+<span class="k">class</span> <span class="nc">TemperatureFit</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class representing a fit to a temperature dataset. This is a base class for arbitrary fits.</span>
+<span class="sd">    </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            data (np.array): </span>
+<span class="sd">                The temperature data used for the fit.</span>
+<span class="sd">            function: </span>
+<span class="sd">                A function that takes in xy coordinates and returns a temperature value.</span>
+<span class="sd">            parameters: </span>
+<span class="sd">                Fitting parameters. Exists as a reference to keep track of parameters but is not actually used. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="n">function</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span></div>
+
+
+
+<div class="viewcode-block" id="TemperaturePolyFit">
+<a class="viewcode-back" href="../TemperatureModel.html#temperatureimage.TemperaturePolyFit">[docs]</a>
+<span class="k">class</span> <span class="nc">TemperaturePolyFit</span><span class="p">(</span><span class="n">TemperatureFit</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class representing a 2D polynomial fit with respect to space (xy coordinates) to a temperature dataset.</span>
+<span class="sd">    </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            data (np.array): </span>
+<span class="sd">                The temperature data used for the fit.</span>
+<span class="sd">            degree (int): </span>
+<span class="sd">                The degree of the polynomial fit.</span>
+<span class="sd">            parameters: </span>
+<span class="sd">                Polynomial coefficients and offsets for the fit. The polynomial coefficients should be in a flattened array of length degree^2, and the last two parameters should be the x and y offsets for the fit.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">degree</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">degree</span> <span class="o">=</span> <span class="n">degree</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_poly2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_poly2d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">M</span>
+        <span class="n">prms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">])</span>
+        <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">prms</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">prms</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">:]</span>
+        <span class="n">prms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">prms</span><span class="p">,</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">prms</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">prms</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">prms</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">degree</span><span class="p">)</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polynomial</span><span class="o">.</span><span class="n">polynomial</span><span class="o">.</span><span class="n">polyval2d</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="n">y0</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">z</span></div>
+
+    
+<span class="k">class</span> <span class="nc">SuperFit</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fits</span><span class="p">:</span><span class="nb">list</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fits</span> <span class="o">=</span> <span class="n">fits</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<div class="viewcode-block" id="SuperPolyFit">
+<a class="viewcode-back" href="../TemperatureModel.html#temperatureimage.SuperPolyFit">[docs]</a>
+<span class="k">class</span> <span class="nc">SuperPolyFit</span><span class="p">(</span><span class="n">SuperFit</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class representing a polynomial fit with respect to temperature based on multiple underlying polynomial fits with respect to space. </span>
+
+<span class="sd">            The goal of this class is to create a function that takes in xy coordinates and a temperature value and returns a temperature value, while keeping track of the datesets used to create the fit.</span>
+<span class="sd">    </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            temperatures (list of float): </span>
+<span class="sd">                The temperatures at which the fits were taken.</span>
+<span class="sd">            fits (list of TemperaturePolyFit): </span>
+<span class="sd">                The underlying polynomial fits. Each polynomial fit must have a corresponding temperature in the temperatures list.</span>
+<span class="sd">            degree (int): </span>
+<span class="sd">                The degree of the polynomial fit with respect to temperature.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temperatures</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span> <span class="n">fits</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span> <span class="n">degree</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">temperatures</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fits</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Number of temperatures must match number of fits&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temperatures</span> <span class="o">=</span> <span class="n">temperatures</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subdegree</span> <span class="o">=</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+        <span class="k">for</span> <span class="n">fit</span> <span class="ow">in</span> <span class="n">fits</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="n">TemperaturePolyFit</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;All fits must be TemperaturePolyFit objects&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">fit</span><span class="o">.</span><span class="n">degree</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">subdegree</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">subdegree</span> <span class="o">=</span> <span class="n">fit</span><span class="o">.</span><span class="n">degree</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coefficients</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">subdegree</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">subdegree</span><span class="p">,</span> <span class="n">degree</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">offsets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">c1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">subdegree</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">c2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">subdegree</span><span class="p">):</span>
+                <span class="n">coeffs</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">fit</span> <span class="ow">in</span> <span class="n">fits</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">fit</span><span class="o">.</span><span class="n">degree</span> <span class="o">&gt;</span> <span class="n">c1</span> <span class="ow">and</span> <span class="n">fit</span><span class="o">.</span><span class="n">degree</span> <span class="o">&gt;</span> <span class="n">c2</span><span class="p">:</span>
+                        <span class="n">coeffs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fit</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">])</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">coeffs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">temperatures</span><span class="p">,</span> <span class="n">coeffs</span><span class="p">,</span> <span class="n">degree</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">coefficients</span><span class="p">[</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">]</span> <span class="o">=</span> <span class="n">popt</span>
+
+        <span class="k">def</span> <span class="nf">_superpoly2d</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">M</span>
+            <span class="n">degree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">subdegree</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">degree</span><span class="p">,</span> <span class="n">degree</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">c1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">degree</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">c2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">degree</span><span class="p">):</span>
+                    <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coefficients</span><span class="p">[</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">]</span>
+                    <span class="n">c</span><span class="p">[</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">T</span> <span class="o">**</span> <span class="p">(</span><span class="n">degree</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">))])</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polynomial</span><span class="o">.</span><span class="n">polynomial</span><span class="o">.</span><span class="n">polyval2d</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">offsets</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">offsets</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">z</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="n">_superpoly2d</span>        </div>
+
+        
+
+
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright May 2026, Caleb Lowe.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

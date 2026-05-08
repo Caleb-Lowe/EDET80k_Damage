@@ -46,6 +46,7 @@ APERTURE_HEIGHT = 5 # millimeters, height of the aperture above the top of the l
 LID_THICKNESS = 12 # millimeters, thickness of the lid
 
 LOWER_APERTURE_HEIGHT = CHIP_OFFSET_Z - LID_THICKNESS # millimeters, height of the bottom of the aperture above the sample
+CENTER_APERTURE_HEIGHT = CHIP_OFFSET_Z
 UPPER_APERTURE_HEIGHT = CHIP_OFFSET_Z + APERTURE_HEIGHT # millimeters, height of the top of the aperture above the sample
 
 # EMISSIVITY_PAPER = 0.68
@@ -75,6 +76,7 @@ CFM = np.linalg.inv(LFM)
 #=============================== Temperature Helper Functions ==================================
 
 def cameraChipVector(x, y, rho = 0, phi = 0, view_coords = False):
+    """Finds the vector from a point on the chip (defined by x and y coordinates) to a point on the camera lens (defined by rho and phi)"""
     coordinates = [CAMERA_LENGTH * np.sin(rho) * np.cos(phi),
                    CAMERA_LENGTH * np.sin(rho) * np.sin(phi),
                    CAMERA_LENGTH * np.cos(rho)]
@@ -97,6 +99,7 @@ def cameraChipVector(x, y, rho = 0, phi = 0, view_coords = False):
     return rx, ry, rz
 
 def apertureRadii(x, y, rho = 0, phi = 0, view_coords = False):
+    """Determines the distance from the center(s) of the lid aperture(s) to the intersection of the camera chip vector and the aperture(s)'s plane"""
     rx, ry, rz = cameraChipVector(x, y, rho, phi)
     #print(rx, ry, rz)
     
@@ -112,13 +115,15 @@ def apertureRadii(x, y, rho = 0, phi = 0, view_coords = False):
 
     # Calculate the radius (with center at the aperture center) at which the camera vector intersects the bottom and top of the aperture
     radius_u = np.sqrt(((rx * UPPER_APERTURE_HEIGHT / rz) - aperture_x) ** 2 + ((ry * UPPER_APERTURE_HEIGHT / rz) - aperture_y) ** 2)
+    radius_c = np.sqrt(((rx * CENTER_APERTURE_HEIGHT / rz) - aperture_x) ** 2 + ((ry * CENTER_APERTURE_HEIGHT / rz) - aperture_y) ** 2)
     radius_l = np.sqrt(((rx * LOWER_APERTURE_HEIGHT / rz) - aperture_x) ** 2 + ((ry * LOWER_APERTURE_HEIGHT / rz) - aperture_y) ** 2)
     
-    return radius_l, radius_u
+    return radius_l, radius_c, radius_u
 
 #=========================== Temperature Calculation Functions ===============================
 
 def pointTemp(x, y, maxTemp, rho = 0, phi = 0):
+    """Simulates lambertian and occlusion distortion of a temperature measurement for a point on the chip and a single point on the camera lens."""
     rx, ry, rz = cameraChipVector(x, y, rho, phi)
     #print(rx, ry, rz)
     
@@ -126,17 +131,22 @@ def pointTemp(x, y, maxTemp, rho = 0, phi = 0):
     theta = np.atan2(np.sqrt(rx**2 + ry**2), rz)
 
     # Calculate the radius (with center at the aperture center) at which the camera vector intersects the bottom and top of the aperture
-    radius_l, radius_u = apertureRadii(x, y, rho, phi)
+    radius_l, radius_c, radius_u = apertureRadii(x, y, rho, phi)
     #print("Radius Lower:", radius_l, "Radius Upper:", radius_u)
     
     # Calculate the temperature based on the angle
-    if (radius_l > APERTURE_DIAMETER / 2) or (radius_u > APERTURE_DIAMETER / 2):
+    if (radius_l > 28 / 2) or (radius_c > 28 / 2) or (radius_u > 38 / 2):
         rectifiedTemp = AMBIENT_TEMPERATURE  # If the camera vector is blocked by the lid, return ambient temperature
     else:
         rectifiedTemp = ((maxTemp ** 4) * np.cos(theta)) ** 0.25
     return rectifiedTemp
 
 def approxTemp(x, y, maxTemp, resolution = 20):
+    """Simulates lambertian and occlusion distortion of a temperature measurement for a point on the chip over the entire camera lens.
+    Resolution determines how many points on the camera lens will be used for the approximation.
+    
+    .. Note::
+        Point selection on the camera lens uses an algorithm that scales with resolution cubed (rather than squared), and biases towards outer points."""
     maxRho = np.arcsin(LENS_DIAMETER / (2 * CAMERA_LENGTH))
     for i in range(resolution):
         rho = maxRho * i / resolution
@@ -150,7 +160,7 @@ def approxTemp(x, y, maxTemp, resolution = 20):
     return avgTemp
 
 def correctedTemp(x, y, temperature, resolution = 2, lambertian = True, occlusion = True, quadratic = True):
-
+    """Gives an approximate correction (lambertian and/or occlusion) for a temperature measurement for a point on the chip over the entire camera lens."""
     # Return early if temperature is at ambient; assume comes from extraneous points in generation of warped image
     if temperature <= KELVIN_OFFSET:
         return temperature
@@ -172,8 +182,8 @@ def correctedTemp(x, y, temperature, resolution = 2, lambertian = True, occlusio
             rho = maxRho * i / resolution
             for j in range(deltaPoints(i)):
                 phi = 2 * np.pi * (j + 0.5) / deltaPoints(i)
-                radius_l, radius_u = apertureRadii(x, y, rho, phi)
-                if (radius_l > APERTURE_DIAMETER / 2) or (radius_u > APERTURE_DIAMETER / 2):
+                radius_l, radius_c, radius_u = apertureRadii(x, y, rho, phi)
+                if (radius_l > 28 / 2) or (radius_c > 28 / 2) or (radius_u > 38 / 2):
                     occludedCounter += 1
         
         # Intermediate calculation of temperature (accounting for occlusion but not Lambertian emission)
@@ -197,7 +207,7 @@ def correctedTemp(x, y, temperature, resolution = 2, lambertian = True, occlusio
 #==================================== Image Functions ========================================
 
 def colorTemp(temperature, min, max, cmap = 'magma'):
-    # Returns an RGB tuple corresponding to the temperature value
+    """Returns an RGB tuple corresponding to the temperature value"""
     progress = (temperature - min) / (max - min)
     if cmap != IRON:
         cmap = matplotlib.colormaps.get_cmap(cmap)
@@ -205,6 +215,7 @@ def colorTemp(temperature, min, max, cmap = 'magma'):
     return (int(color_val[0] * 255), int(color_val[1] * 255), int(color_val[2] * 255))
 
 def getRoi(roi):
+    """Returns the corners of a rectangular ROI. ``roi`` must be either a tuple of at least four xy-coordinates or one of 'chip', 'brick', and 'fullbrick'"""
     try:
         if roi == "chip":
             chip = pm.get_chip_corners()
@@ -221,6 +232,7 @@ def getRoi(roi):
         raise ValueError("Invalid ROI specified. Use 'chip', 'brick', 'fullbrick', or provide custom coordinates.")
 
 def onBorder(x, y, top_left, bottom_right):
+    """Returns true if a point (defined with x and y coordinates) lies on the perimeter of a rectangle (defined by its top_left and bottom_right corners)"""
     if (y == top_left[0] or y == bottom_right[0]) and x >= top_left[1] and x <= bottom_right[1]:
         return True
     elif (x == top_left[1] or x == bottom_right[1]) and y >= top_left[0] and y <= bottom_right[0]:
@@ -228,11 +240,13 @@ def onBorder(x, y, top_left, bottom_right):
     return False
 
 def inRoi(x, y, top_left, bottom_right):
+    """Returns true if a point (defined with x and y coordinates) lies within a rectangle (defined by its top_left and bottom_right corners)"""
     if x >= top_left[1] and x <= bottom_right[1] and y >= top_left[0] and y <= bottom_right[0]:
         return True
     return False
 
 def getRoiPoly(roi):
+    """Returns all vertices of a polygonal ROI. ``roi`` must be either a tuple of xy-coordinates or one of 'chip', 'brick', and 'fullbrick"""
     try:
         if roi == "chip":
             chip = pm.get_chip_corners()
@@ -249,6 +263,7 @@ def getRoiPoly(roi):
         raise ValueError("Invalid ROI specified. Use 'chip', 'brick', 'fullbrick', or provide custom coordinates.")
 
 def onBorderPoly(x, y, roi):
+    """Returns true if a point (defined with x and y coordinates) lies on the perimeter of a polygon"""
     for i in range(len(roi)):
         next_i = (i + 1) % len(roi)
         # Vertical line case
@@ -273,6 +288,7 @@ def onBorderPoly(x, y, roi):
     return False
 
 def inRoiPoly(x, y, roi):
+    """Returns true if a point (defined with x and y coordinates) lies within a polygon"""
     # Ray-casting algorithm to determine if point is in polygon
     inside = False
     n = len(roi)
@@ -291,6 +307,8 @@ def inRoiPoly(x, y, roi):
 #========================== Holistic Correction Helper Functions ==============================
 
 def imageCorrectRuntimeEstimate(roi, correction_resolution, lambertian, occlusion, quadratic, cmap):
+    """Gives an approximate runtime for temperature correction. 
+    Runtime scales linearly with number of pixels (temperatures) and quadratically (or sometimes cubically) with the correction_resolution."""
     # Determine ROI coordinates
     if roi != None:
         top_left, bottom_right = getRoi(roi)
@@ -324,6 +342,7 @@ def imageCorrectRuntimeEstimate(roi, correction_resolution, lambertian, occlusio
 #============================== Holistic Correction Function ==================================
 
 def imageCorrect(filename, title = None, mintemp = None, maxtemp = None, roi = None, lambertian = True, occlusion = True, correction_resolution = 2, quadratic = True, render_image = True, cmap = 'iron'):
+    """Corrects (lambertian and occlusion) an Optris image and returns the result as an array."""
     # Determine ROI coordinates
     if roi != None:
         top_left, bottom_right = getRoi(roi)
@@ -412,6 +431,7 @@ def imageCorrect(filename, title = None, mintemp = None, maxtemp = None, roi = N
 
 
 def renderImage(filename, title = None, mintemp = None, maxtemp = None, roi = None, cmap = 'iron'):
+    """Given an array of temperatures, renders an image. Also renders any roi on top of the image using white lines to represent the perimeter."""
     roi = getRoiPoly(roi)
     if cmap == 'iron':
         cmap = IRON

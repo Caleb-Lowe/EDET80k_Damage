@@ -4,6 +4,7 @@ from abc import ABC, abstractmethod
 
 
 class ROI(ABC):
+    """Abstract base class for regions of interest (ROIs) in thermal image analysis."""
 
     xmin = None
     xmax = None
@@ -11,23 +12,72 @@ class ROI(ABC):
     ymax = None
 
     def getBounds(self):
+        """Returns the bounding box of the ROI as a tuple (xmin, xmax, ymin, ymax).
+        
+        Returns:
+            tuple (int): A tuple containing the bounding box coordinates (xmin, xmax, ymin, ymax).
+        """
         return (self.xmin, self.xmax, self.ymin, self.ymax)
 
     @abstractmethod
     def onBorder(self, x, y):
+        """Returns True if the point (x, y) is on the border of the ROI, False otherwise.
+        
+        Parameters:
+            x (int): The x-coordinate of the point to check.
+            y (int): The y-coordinate of the point to check.
+        
+        Returns:
+            bool: True if the point is on the border of the ROI, False otherwise.
+        """
         pass
 
     @abstractmethod
     def inROI(self, x, y):
+        """Returns True if the point (x, y) is inside the ROI, False otherwise.
+        
+        Parameters:
+            x (int): The x-coordinate of the point to check.
+            y (int): The y-coordinate of the point to check.
+        
+        Returns:
+            bool: True if the point is inside the ROI, False otherwise.
+        """
         pass
     
     @abstractmethod
     def area(self):
+        """Returns the area of the ROI. 
+        
+        .. note:: 
+            For optrisROI.superROI, this area is an approximation.
+        
+        Returns:
+            float: The area of the ROI in pixel units.
+        """
         pass
 
+class fullROI(ROI):
+    """A full ROI that encompasses the entire image. When programming new functions, this can be used as a default ROI when no specific region is of interest."""
+    def onBorder(self, x, y):
+        return False
+    
+    def inROI(self, x, y):
+        return True
+    
+    def area(self):
+        return float('inf')
+    
+FULL = fullROI()
+    
 
 class RectangleROI(ROI):
-    # Initialized with the top-left and bottom-right corners
+    """A rectangular ROI defined by the top left and bottom right corners.
+    
+    Parameters:
+        corner1 (tuple): A tuple (x, y) representing the coordinates of the top left corner of the rectangle.
+        corner2 (tuple): A tuple (x, y) representing the coordinates of the bottom right corner of the rectangle.
+    """
     def __init__(self, corner1, corner2):
         if (len(corner1) != 2) or (len(corner2) != 2):
             raise Exception("Points must have the format [x,y]")
@@ -50,13 +100,50 @@ class RectangleROI(ROI):
         return (self.xmax - self.xmin) * (self.ymax - self.ymin)
     
 CHIP = RectangleROI(np.flip(pm.get_chip_corners()[0]), np.flip(pm.get_chip_corners()[2]))
+"""A rectangular ROI representing the 32mm x 32mm area of the chip that can be lased.
+
+    .. admonition:: Image of the area represented by the CHIP ROI
+        :collapsible: closed
+
+        .. figure:: ../documentation/_static/CHIP.png
+            :scale: 50 %
+            :alt: CHIP ROI Diagram
+
+            The annealing brick as viewed from an angle. The dotted green line represents the square defined by the CHIP ROI (when viewed from above).
+    """
+
 BRICK = RectangleROI(np.flip(pm.get_target_corners()[0]), np.flip(pm.get_target_corners()[2]))
+"""A rectangular ROI representing the raised area of the annealing brick.
+
+     .. admonition:: Image of the area represented by the BRICK ROI
+        :collapsible: closed
+
+        .. figure:: ../documentation/_static/BRICK.png
+            :scale: 50 %
+            :alt: BRICK ROI Diagram
+
+            The annealing brick as viewed from an angle. The dotted green line represents the rectangle defined by the BRICK ROI (when viewed from above).
+     """
+
 FBRICK = RectangleROI(np.flip(pm.get_fbrick_corners()[0]), np.flip(pm.get_fbrick_corners()[2]))
+"""A rectangular ROI representing the full brick area.
 
+     .. admonition:: Image of the area represented by the FBRICK ROI
+        :collapsible: closed
 
+        .. figure:: ../documentation/_static/FBRICK.png
+            :scale: 50 %
+            :alt: FBRICK ROI Diagram
+
+            The annealing brick as viewed from an angle. The dotted green line represents the rectangle defined by the FBRICK ROI (when viewed from above).
+     """
 
 class PolyROI(ROI):
-    # Initialized with a list of vertices (points)
+    """A polygonal ROI defined by a list of vertices.
+    
+    Parameters:
+        points (list): A list of tuples [(x1, y1), (x2, y2), ...] representing the vertices of the polygon in order.
+    """
     def __init__(self, points):
         self.vertices = np.array(points)
         self.ymin = np.min(self.vertices[:,0])
@@ -119,6 +206,14 @@ class PolyROI(ROI):
 
 
 class EllipseROI(ROI):
+    """An elliptical ROI defined by the center and the lengths of the semi-major and semi-minor axes.
+    
+    Parameters:
+        center (tuple): A tuple (y, x) representing the coordinates of the center of the ellipse.
+        x_axis (float): The length of the semi-major/minor axis of the ellipse in the x direction.
+        y_axis (float): The length of the semi-major/minor axis of the ellipse in the y direction.
+    """
+
     # Initialized with the center, and the length of the semi-major/minor axes. Vertex and co-vertix must be located on the x/y axes
     def __init__(self, center, x_axis, y_axis):
         self.y, self.x = center
@@ -143,7 +238,20 @@ class EllipseROI(ROI):
 
 
 class superROI(ROI):
-    # initialized with a list of ROIs to combine
+    """An ROI defined by a list of ROIs and a mode that determines how the ROIs are combined.
+    
+    Parameters:
+        rois (list): A list of ROI objects that define the component ROIs.
+
+        mode (str): A string that determines how the component ROIs are combined. Must be one of 'union', 'subtract', or 'intersect'.
+
+    .. note:: 
+        On 'union', 'subtract', and 'intersect' with respect to superROI:
+
+        * 'union' means the superROI includes all points that are in any of the component ROIs.
+        * 'subtract' means the superROI includes all points that are in the first ROI but not in any of the other ROIs.
+        * 'intersect' means the superROI includes all points that are in all of the component ROIs.
+    """
     def __init__(self, rois, mode='union'):
         self.rois = rois
         self.mode = mode  # 'union', 'subtract', or 'intersect'
@@ -224,7 +332,7 @@ class superROI(ROI):
             return True
         
     def area(self):
-        print("Warning: Area calculation for superROI is approximate and may be inaccurate for complex shapes.")
+        print("Warning: Area calculation for superROI is an approximation and may be inaccurate for complex shapes.")
         if self.mode == 'union':
             # Approximate area by summing individual areas (may overcount overlaps)
             total_area = 0

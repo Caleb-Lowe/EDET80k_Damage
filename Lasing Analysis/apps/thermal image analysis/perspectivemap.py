@@ -26,7 +26,7 @@ TRUE_HEIGHT = 37.2  # mm
 CHIP_SIDELENGTH = 32.25  # mm, perhaps redundant with CHIP_DIM below but CAD gives this value
 FTRUE_WIDTH = 62 # mm, width of the full brick
 FTRUE_HEIGHT = 45 # mm, height of the full brick
-SCALING_FACTOR = 5  # factor to scale up physical dimensions to image pixel dimensions
+SCALING_FACTOR = 5  # factor to scale up physical dimensions to image pixel dimensions (e.g., 5 pixels per mm).
 
 WIDTH = int(TRUE_WIDTH * SCALING_FACTOR)
 HEIGHT = int(TRUE_HEIGHT * SCALING_FACTOR)
@@ -93,6 +93,18 @@ def get_calibration_dimensions():
     '''
     return TRUE_WIDTH, TRUE_HEIGHT, SCALING_FACTOR
 
+def pixels_to_mm(x, y):
+    """
+    Converts a coordinate in pixels to a coordinate in mm. Origin is at the top left corner of the chip.
+    """
+    # CHIP_EXTREMUM had to be used for the y-component instead of CHIP_ORIGIN as this function uses the standard origin for images, while CHIP_ORIGIN uses the standard origin for physical systems.
+    return (x - CHIP_ORIGIN[0]) / SCALING_FACTOR, (y - CHIP_EXTREMUM[1]) / SCALING_FACTOR
+
+def new_image_transform(actual_points):
+    target = np.float32([[ox, oy], [ox + WIDTH, oy],
+                         [ox + WIDTH, oy + HEIGHT], [ox, oy + HEIGHT]])
+    return cv2.getPerspectiveTransform(actual_points, target)
+
 def refresh_reference():
     '''
     Reloads the reference points from file and recalculates the perspective transform.
@@ -126,11 +138,11 @@ def perspective_map_points(x, y, transform):
     Wrapper function for PerspectiveTransform to be more flexible with inputs
     Returns an x, y of newly transformed points
 
-    Params:
-    x, y: float or Iterable[float]: Coordinate or iterable of coordinates along
-    either the x or y axis. x and y should have the same length.
+    Parameters:
+        x, y (float or Iterable[float]): Coordinate or iterable of coordinates along
+        either the x or y axis. x and y should have the same length.
 
-    transform: the transformation matrix to be applied to x and y.
+        transform: the transformation matrix to be applied to x and y.
     '''
     # format points for cv2
 
@@ -157,15 +169,15 @@ def to_arbitrary_coords(x, y, dimensions, origin, extremum):
     as well as its physical dimensions, take arbitrary points and map them
     to physical space in a cartesian coordinate system centered on the origin.
 
-    params:
-    x, y float or Array[float]: x and y coordinates (should be paired) to be converted
+    Parameters:
+        x, y (float or Array[float]): x and y coordinates (should be paired) to be converted
 
-    dimensions Tuple(float, float): reference dimensions describing the width and height of
-                                    a rectangular ROI.
+        dimensions (Tuple(float, float)): reference dimensions describing the width and height of
+                                        a rectangular ROI.
 
-    origin, extremum Tuple(float, float): reference points to define the new coordinate system with.
-                                          the origin will be (0, 0), and the extremum will be at the max dimensions
-                                          of the rectangle.
+        origin, extremum (Tuple(float, float)): reference points to define the new coordinate system with.
+                                            the origin will be (0, 0), and the extremum will be at the max dimensions
+                                            of the rectangle.
     '''
     # shift everything so that (0, 0) is the origin
 

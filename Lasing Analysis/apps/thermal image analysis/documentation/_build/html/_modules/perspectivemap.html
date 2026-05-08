@@ -1,0 +1,686 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>perspectivemap &#8212; Thermal Image Analysis Documentation 2026 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=fc6fd62b"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/perspectivemap';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Thermal Image Analysis.png" class="logo__image only-light" alt="Thermal Image Analysis Documentation 2026 documentation - Home"/>
+    <img src="../_static/Thermal Image Analysis.png" class="logo__image only-dark pst-js-only" alt="Thermal Image Analysis Documentation 2026 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../camera.html">
+    camera.py
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../optrisROI.html">
+    optrisROI.py
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../temperatureimage.html">
+    temperatureimage.py
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../oldstuff.html">
+    Pre2025 and Deprecated Files
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../camera.html">
+    camera.py
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../optrisROI.html">
+    optrisROI.py
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../temperatureimage.html">
+    temperatureimage.py
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../oldstuff.html">
+    Pre2025 and Deprecated Files
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">perspectivemap</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for perspectivemap</h1><div class="highlight"><pre>
+<span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">This module contains code to account for the warped perspective</span>
+<span class="sd">caused by aiming the camera off-axis to avoid measuring its own reflection.</span>
+<span class="sd">It uses a set of manually determined calibration points stored in REFERENCE_PATH</span>
+<span class="sd">to generate an image/coordinate transformation which maps points on the camera image</span>
+<span class="sd">to points within the chip coordinate system.</span>
+
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterable</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+<span class="n">REFERENCE_PATH</span> <span class="o">=</span> <span class="s2">&quot;./CameraPerspectivePoints.txt&quot;</span>
+
+<span class="c1"># EDIT THESE FOR RECALIBRATION</span>
+
+<span class="c1"># exact WIDTH and HEIGHT (mm) of the rectangular feature used for calibration.</span>
+<span class="c1"># as of October 2025 we are using the small outline of the aluminum chip-holding brick.</span>
+<span class="c1"># Diagram: https://docs.google.com/drawings/d/1t9eOAOHU1ThwDQBZjNbz-dM8aimdOd7iz81cOJ7B_L8/edit?usp=sharing</span>
+
+<span class="n">TRUE_WIDTH</span> <span class="o">=</span> <span class="mf">48.2</span>  <span class="c1"># mm</span>
+<span class="n">TRUE_HEIGHT</span> <span class="o">=</span> <span class="mf">37.2</span>  <span class="c1"># mm</span>
+<span class="n">CHIP_SIDELENGTH</span> <span class="o">=</span> <span class="mf">32.25</span>  <span class="c1"># mm, perhaps redundant with CHIP_DIM below but CAD gives this value</span>
+<span class="n">FTRUE_WIDTH</span> <span class="o">=</span> <span class="mi">62</span> <span class="c1"># mm, width of the full brick</span>
+<span class="n">FTRUE_HEIGHT</span> <span class="o">=</span> <span class="mi">45</span> <span class="c1"># mm, height of the full brick</span>
+<span class="n">SCALING_FACTOR</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># factor to scale up physical dimensions to image pixel dimensions (e.g., 5 pixels per mm).</span>
+
+<span class="n">WIDTH</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">TRUE_WIDTH</span> <span class="o">*</span> <span class="n">SCALING_FACTOR</span><span class="p">)</span>
+<span class="n">HEIGHT</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">TRUE_HEIGHT</span> <span class="o">*</span> <span class="n">SCALING_FACTOR</span><span class="p">)</span>
+<span class="n">SIDELENGTH</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">CHIP_SIDELENGTH</span> <span class="o">*</span> <span class="n">SCALING_FACTOR</span><span class="p">)</span>
+
+<span class="n">CHIP_DIM</span> <span class="o">=</span> <span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>  <span class="c1"># physical dimensions of the chip</span>
+<span class="n">CHIP_ORIGIN</span> <span class="o">=</span> <span class="p">(</span><span class="mi">154</span><span class="p">,</span> <span class="mi">260</span><span class="p">)</span>  <span class="c1"># sensor bottom-left corner in image</span>
+<span class="n">CHIP_EXTREMUM</span> <span class="o">=</span> <span class="p">(</span><span class="mi">307</span><span class="p">,</span> <span class="mi">110</span><span class="p">)</span>  <span class="c1"># sensor top-right corner</span>
+
+<span class="c1"># used to inverting axes</span>
+<span class="n">OPTRIS_IMGHEIGHT</span> <span class="o">=</span> <span class="mi">288</span>
+
+
+<span class="c1"># &quot;offset&quot;; the position of a reference in image coordinates</span>
+<span class="c1"># This is currently the top-left corner of the rectangle.</span>
+<span class="c1"># this ensures the transformed image is aligned; this point will remain unmoved</span>
+<span class="n">ox</span> <span class="o">=</span> <span class="mi">102</span>
+<span class="n">oy</span> <span class="o">=</span> <span class="mi">94</span>
+
+<span class="c1"># Original values for ox, oy (Allen&#39;s calibration)</span>
+<span class="c1"># ox = 73</span>
+<span class="c1"># oy = 83</span>
+
+<span class="c1"># END CONSTANTS</span>
+
+<span class="c1"># in-image positions of the rectangle&#39;s corners</span>
+<span class="n">actual</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">REFERENCE_PATH</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+
+<span class="c1"># the new, &quot;squared&quot; positions that you want your corners to be at</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">([[</span><span class="n">ox</span><span class="p">,</span> <span class="n">oy</span><span class="p">],</span> <span class="p">[</span><span class="n">ox</span> <span class="o">+</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">oy</span><span class="p">],</span>
+                     <span class="p">[</span><span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">+</span> <span class="n">HEIGHT</span><span class="p">],</span> <span class="p">[</span><span class="n">ox</span> <span class="o">+</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">oy</span> <span class="o">+</span> <span class="n">HEIGHT</span><span class="p">]])</span>
+
+<span class="c1"># build transformation matrix</span>
+<span class="n">image_transform</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">getPerspectiveTransform</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="get_target_corners">
+<a class="viewcode-back" href="../perspectivemap.html#perspectivemap.get_target_corners">[docs]</a>
+<span class="k">def</span> <span class="nf">get_target_corners</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Returns the target corners of the calibration rectangle in image coordinates.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">([[</span><span class="n">ox</span><span class="p">,</span> <span class="n">oy</span><span class="p">],</span> <span class="p">[</span><span class="n">ox</span> <span class="o">+</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">oy</span><span class="p">],</span>
+                         <span class="p">[</span><span class="n">ox</span> <span class="o">+</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">oy</span> <span class="o">+</span> <span class="n">HEIGHT</span><span class="p">],</span> <span class="p">[</span><span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">+</span> <span class="n">HEIGHT</span><span class="p">]])</span>
+    <span class="k">return</span> <span class="n">target</span></div>
+
+
+<div class="viewcode-block" id="get_chip_corners">
+<a class="viewcode-back" href="../perspectivemap.html#perspectivemap.get_chip_corners">[docs]</a>
+<span class="k">def</span> <span class="nf">get_chip_corners</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Returns the corners of the chip in image coordinates.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">chip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">([[</span><span class="n">ox</span> <span class="o">+</span> <span class="n">WIDTH</span> <span class="o">-</span> <span class="n">SIDELENGTH</span><span class="p">,</span> <span class="n">oy</span> <span class="o">+</span> <span class="n">HEIGHT</span> <span class="o">-</span> <span class="n">SIDELENGTH</span><span class="p">],</span> <span class="p">[</span><span class="n">ox</span> <span class="o">+</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">oy</span> <span class="o">+</span> <span class="n">HEIGHT</span> <span class="o">-</span> <span class="n">SIDELENGTH</span><span class="p">],</span>
+                       <span class="p">[</span><span class="n">ox</span> <span class="o">+</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">oy</span> <span class="o">+</span> <span class="n">HEIGHT</span><span class="p">],</span> <span class="p">[</span><span class="n">ox</span> <span class="o">+</span> <span class="n">WIDTH</span> <span class="o">-</span> <span class="n">SIDELENGTH</span><span class="p">,</span> <span class="n">oy</span> <span class="o">+</span> <span class="n">HEIGHT</span><span class="p">]])</span>
+    <span class="k">return</span> <span class="n">chip</span></div>
+
+
+<div class="viewcode-block" id="get_fbrick_corners">
+<a class="viewcode-back" href="../perspectivemap.html#perspectivemap.get_fbrick_corners">[docs]</a>
+<span class="k">def</span> <span class="nf">get_fbrick_corners</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Returns the corners of the full brick in image coordinates.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">brick</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">([[</span><span class="n">ox</span> <span class="o">-</span> <span class="p">(</span><span class="n">FTRUE_WIDTH</span> <span class="o">-</span> <span class="n">TRUE_WIDTH</span><span class="p">)</span> <span class="o">*</span> <span class="n">SCALING_FACTOR</span><span class="p">,</span> <span class="n">oy</span> <span class="o">-</span> <span class="p">(</span><span class="n">FTRUE_HEIGHT</span> <span class="o">-</span> <span class="n">TRUE_HEIGHT</span><span class="p">)</span> <span class="o">*</span> <span class="n">SCALING_FACTOR</span><span class="p">],</span> <span class="p">[</span><span class="n">ox</span> <span class="o">+</span> <span class="n">WIDTH</span><span class="p">,</span>  <span class="n">oy</span> <span class="o">-</span> <span class="p">(</span><span class="n">FTRUE_HEIGHT</span> <span class="o">-</span> <span class="n">TRUE_HEIGHT</span><span class="p">)</span> <span class="o">*</span> <span class="n">SCALING_FACTOR</span><span class="p">],</span>
+                        <span class="p">[</span><span class="n">ox</span> <span class="o">+</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">oy</span> <span class="o">+</span> <span class="n">HEIGHT</span><span class="p">],</span> <span class="p">[</span><span class="n">ox</span> <span class="o">-</span> <span class="p">(</span><span class="n">FTRUE_WIDTH</span> <span class="o">-</span> <span class="n">TRUE_WIDTH</span><span class="p">)</span> <span class="o">*</span> <span class="n">SCALING_FACTOR</span><span class="p">,</span> <span class="n">oy</span> <span class="o">+</span> <span class="n">HEIGHT</span><span class="p">]])</span>
+    <span class="k">return</span> <span class="n">brick</span></div>
+
+
+<div class="viewcode-block" id="get_calibration_dimensions">
+<a class="viewcode-back" href="../perspectivemap.html#perspectivemap.get_calibration_dimensions">[docs]</a>
+<span class="k">def</span> <span class="nf">get_calibration_dimensions</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Returns the physical dimensions (width, height) of the calibration rectangle in mm.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">TRUE_WIDTH</span><span class="p">,</span> <span class="n">TRUE_HEIGHT</span><span class="p">,</span> <span class="n">SCALING_FACTOR</span></div>
+
+
+<span class="k">def</span> <span class="nf">pixels_to_mm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a coordinate in pixels to a coordinate in mm. Origin is at the top left corner of the chip.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># CHIP_EXTREMUM had to be used for the y-component instead of CHIP_ORIGIN as this function uses the standard origin for images, while CHIP_ORIGIN uses the standard origin for physical systems.</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">CHIP_ORIGIN</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">SCALING_FACTOR</span><span class="p">,</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">CHIP_EXTREMUM</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">SCALING_FACTOR</span>
+
+<div class="viewcode-block" id="new_image_transform">
+<a class="viewcode-back" href="../perspectivemap.html#perspectivemap.new_image_transform">[docs]</a>
+<span class="k">def</span> <span class="nf">new_image_transform</span><span class="p">(</span><span class="n">actual_points</span><span class="p">):</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">([[</span><span class="n">ox</span><span class="p">,</span> <span class="n">oy</span><span class="p">],</span> <span class="p">[</span><span class="n">ox</span> <span class="o">+</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">oy</span><span class="p">],</span>
+                         <span class="p">[</span><span class="n">ox</span> <span class="o">+</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">oy</span> <span class="o">+</span> <span class="n">HEIGHT</span><span class="p">],</span> <span class="p">[</span><span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">+</span> <span class="n">HEIGHT</span><span class="p">]])</span>
+    <span class="k">return</span> <span class="n">cv2</span><span class="o">.</span><span class="n">getPerspectiveTransform</span><span class="p">(</span><span class="n">actual_points</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="refresh_reference">
+<a class="viewcode-back" href="../perspectivemap.html#perspectivemap.refresh_reference">[docs]</a>
+<span class="k">def</span> <span class="nf">refresh_reference</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Reloads the reference points from file and recalculates the perspective transform.</span>
+<span class="sd">    Call this function if you have edited the reference points file.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">actual</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">REFERENCE_PATH</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">([[</span><span class="n">ox</span><span class="p">,</span> <span class="n">oy</span><span class="p">],</span> <span class="p">[</span><span class="n">ox</span> <span class="o">+</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">oy</span><span class="p">],</span>
+                     <span class="p">[</span><span class="n">ox</span> <span class="o">+</span> <span class="n">WIDTH</span><span class="p">,</span> <span class="n">oy</span> <span class="o">+</span> <span class="n">HEIGHT</span><span class="p">],</span> <span class="p">[</span><span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">+</span> <span class="n">HEIGHT</span><span class="p">]])</span>
+    <span class="k">global</span> <span class="n">image_transform</span>
+    <span class="n">image_transform</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">getPerspectiveTransform</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="cv_xy_package">
+<a class="viewcode-back" href="../perspectivemap.html#perspectivemap.cv_xy_package">[docs]</a>
+<span class="k">def</span> <span class="nf">cv_xy_package</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    package a point and/or sequences of coordinates corresponding to points</span>
+<span class="sd">    in an opencv-digestible manner</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">):</span>
+        <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">2</span><span class="p">))],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+        <span class="n">pts</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="n">pts</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># single value case</span>
+        <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]]],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">pts</span></div>
+
+
+
+<div class="viewcode-block" id="perspective_map_points">
+<a class="viewcode-back" href="../perspectivemap.html#perspectivemap.perspective_map_points">[docs]</a>
+<span class="k">def</span> <span class="nf">perspective_map_points</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">transform</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Wrapper function for PerspectiveTransform to be more flexible with inputs</span>
+<span class="sd">    Returns an x, y of newly transformed points</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        x, y (float or Iterable[float]): Coordinate or iterable of coordinates along</span>
+<span class="sd">        either the x or y axis. x and y should have the same length.</span>
+
+<span class="sd">        transform: the transformation matrix to be applied to x and y.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># format points for cv2</span>
+
+    <span class="n">pts</span> <span class="o">=</span> <span class="n">cv_xy_package</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="c1"># apply the perspective transform to the points</span>
+    <span class="n">transformed</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">perspectiveTransform</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="n">transform</span><span class="p">)</span>
+    <span class="n">xnew</span><span class="p">,</span> <span class="n">ynew</span> <span class="o">=</span> <span class="n">transformed</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">transformed</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">xnew</span><span class="p">,</span> <span class="n">ynew</span></div>
+
+
+
+<div class="viewcode-block" id="image_coords_to_cartesian">
+<a class="viewcode-back" href="../perspectivemap.html#perspectivemap.image_coords_to_cartesian">[docs]</a>
+<span class="k">def</span> <span class="nf">image_coords_to_cartesian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">imgheight</span><span class="o">=</span><span class="n">OPTRIS_IMGHEIGHT</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Converts image pixel coordinates (y=0 at top) to cartesian (y=0 at bottom).</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">y</span> <span class="o">+</span> <span class="n">imgheight</span></div>
+
+
+
+<div class="viewcode-block" id="to_arbitrary_coords">
+<a class="viewcode-back" href="../perspectivemap.html#perspectivemap.to_arbitrary_coords">[docs]</a>
+<span class="k">def</span> <span class="nf">to_arbitrary_coords</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dimensions</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">extremum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+
+<span class="sd">    Using a reference origin and extremum point defining a rectangular ROI</span>
+<span class="sd">    as well as its physical dimensions, take arbitrary points and map them</span>
+<span class="sd">    to physical space in a cartesian coordinate system centered on the origin.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        x, y (float or Array[float]): x and y coordinates (should be paired) to be converted</span>
+
+<span class="sd">        dimensions (Tuple(float, float)): reference dimensions describing the width and height of</span>
+<span class="sd">                                        a rectangular ROI.</span>
+
+<span class="sd">        origin, extremum (Tuple(float, float)): reference points to define the new coordinate system with.</span>
+<span class="sd">                                            the origin will be (0, 0), and the extremum will be at the max dimensions</span>
+<span class="sd">                                            of the rectangle.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># shift everything so that (0, 0) is the origin</span>
+
+    <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="n">origin</span>
+    <span class="n">ex</span><span class="p">,</span> <span class="n">ey</span> <span class="o">=</span> <span class="n">extremum</span>
+
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">ox</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="n">oy</span>
+    <span class="n">ex</span><span class="p">,</span> <span class="n">ey</span> <span class="o">=</span> <span class="n">ex</span> <span class="o">-</span> <span class="n">ox</span><span class="p">,</span> <span class="n">ey</span> <span class="o">-</span> <span class="n">oy</span>
+
+    <span class="c1"># normalize everything out of the shifted extremum and then scale by desired dimensions</span>
+
+    <span class="n">dim_x</span><span class="p">,</span> <span class="n">dim_y</span> <span class="o">=</span> <span class="n">dimensions</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">ex</span><span class="p">)</span> <span class="o">*</span> <span class="n">dim_x</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">/</span> <span class="n">ey</span><span class="p">)</span> <span class="o">*</span> <span class="n">dim_y</span>
+
+    <span class="k">return</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="camera_to_roi">
+<a class="viewcode-back" href="../perspectivemap.html#perspectivemap.camera_to_roi">[docs]</a>
+<span class="k">def</span> <span class="nf">camera_to_roi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">image_transform</span><span class="p">,</span> <span class="n">roi_dim</span><span class="o">=</span><span class="n">CHIP_DIM</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="n">CHIP_ORIGIN</span><span class="p">,</span> <span class="n">extremum</span><span class="o">=</span><span class="n">CHIP_EXTREMUM</span><span class="p">,</span> <span class="n">imgheight</span><span class="o">=</span><span class="n">OPTRIS_IMGHEIGHT</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Wraps the entire mapping process into a convenient function.</span>
+<span class="sd">    Default values can be configured at the top of the file.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># pre-calibrate by correcting for barrel distortion</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">cv_xy_package</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="c1"># undistorted = cv2.undistortPoints(points, cam, distCoeff)</span>
+    <span class="c1"># x_prec, y_prec = undistorted[:, :, 0], undistorted[:, :, 1]</span>
+
+    <span class="c1"># perspective map</span>
+    <span class="n">x_trans</span><span class="p">,</span> <span class="n">y_trans</span> <span class="o">=</span> <span class="n">perspective_map_points</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">transform</span><span class="p">)</span>
+
+    <span class="c1"># change y axis direction</span>
+    <span class="n">x_flip</span><span class="p">,</span> <span class="n">y_flip</span> <span class="o">=</span> <span class="n">image_coords_to_cartesian</span><span class="p">(</span><span class="n">x_trans</span><span class="p">,</span> <span class="n">y_trans</span><span class="p">,</span> <span class="n">imgheight</span><span class="p">)</span>
+
+    <span class="c1"># do the same thing with the reference points</span>
+    <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="o">=</span> <span class="n">origin</span>
+    <span class="n">ex</span><span class="p">,</span> <span class="n">ey</span> <span class="o">=</span> <span class="n">extremum</span>
+
+    <span class="c1"># for now, distortion correction is disabled - does weird things to coordinates</span>
+    <span class="c1"># undistorted = cv2.undistortPoints(points, cam, distCoeff)</span>
+    <span class="c1"># x_prec, y_prec = undistorted[:, :, 0].flatten(), undistorted[:, :, 1].flatten()</span>
+
+    <span class="n">xref_trans</span><span class="p">,</span> <span class="n">yref_trans</span> <span class="o">=</span> <span class="n">perspective_map_points</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">ox</span><span class="p">,</span> <span class="n">ex</span><span class="p">],</span> <span class="p">[</span><span class="n">oy</span><span class="p">,</span> <span class="n">ey</span><span class="p">],</span> <span class="n">transform</span><span class="p">)</span>
+    <span class="n">refx_flip</span><span class="p">,</span> <span class="n">refy_flip</span> <span class="o">=</span> <span class="n">image_coords_to_cartesian</span><span class="p">(</span>
+        <span class="n">xref_trans</span><span class="p">,</span> <span class="n">yref_trans</span><span class="p">,</span> <span class="n">imgheight</span><span class="p">)</span>
+
+    <span class="n">refx_flip</span> <span class="o">=</span> <span class="n">refx_flip</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">refy_flip</span> <span class="o">=</span> <span class="n">refy_flip</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">origin_converted</span> <span class="o">=</span> <span class="p">(</span><span class="n">refx_flip</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">refy_flip</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">extremum_converted</span> <span class="o">=</span> <span class="p">(</span><span class="n">refx_flip</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">refy_flip</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1"># convert everything to chip coordinates</span>
+    <span class="n">cx</span><span class="p">,</span> <span class="n">cy</span> <span class="o">=</span> <span class="n">to_arbitrary_coords</span><span class="p">(</span>
+        <span class="n">x_flip</span><span class="p">,</span> <span class="n">y_flip</span><span class="p">,</span> <span class="n">roi_dim</span><span class="p">,</span> <span class="n">origin_converted</span><span class="p">,</span> <span class="n">extremum_converted</span><span class="p">)</span>
+
+    <span class="c1"># return cx, cy</span>
+    <span class="k">return</span> <span class="n">x_trans</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_trans</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright May 2026, Caleb Lowe.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
